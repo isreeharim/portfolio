@@ -1,0 +1,404 @@
+:root {
+    --bg-color: #0f0c1b;
+    --text-color: #fce8ee;
+    --primary-color: #FFB6C1;
+    --secondary-color: #FF1493;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrolling during animations */
+}
+
+/* Confetti Layer */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.stage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    z-index: 10;
+}
+
+.stage.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.stage.hidden {
+    display: none;
+}
+
+/* Typography */
+h1.welcome-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    background: linear-gradient(to right, #FFB6C1, #FF1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    animation: fadeInDown 1.5s ease-out;
+}
+
+/* Buttons */
+.glow-button {
+    background: linear-gradient(45deg, #FF1493, #FFB6C1);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+}
+
+.glow-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+.glow-button:active {
+    transform: scale(0.95);
+}
+
+/* Drawing Stage */
+.drawing-container {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#heart-svg {
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+}
+
+.heart-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    /* Animation added via JS class later */
+}
+
+.heart-path.draw {
+    animation: drawHeart 2s cubic-bezier(0.4, 0, 0.2, 1) forwards, fillHeart 1s ease-in forwards 1.8s;
+}
+
+.fade-text {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    animation: pulseText 2s infinite;
+}
+
+/* Glassmorphism Cards (default) */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wish Card Solid Style (No Transparency) */
+.wish-card {
+    background: #1a1525; /* Solid elegant dark background */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Aesthetic Background Drawing */
+.bg-drawing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease 1s;
+}
+
+.wish-card.animate ~ .bg-drawing, 
+.wish-card.animate .bg-drawing,
+.stage.active .bg-drawing {
+    opacity: 1;
+}
+
+.star {
+    animation: twinkle 3s infinite alternate;
+}
+.star-delay-1 {
+    animation-delay: 1s;
+}
+.star-delay-2 {
+    animation-delay: 2s;
+}
+
+/* Minimalist Balloons */
+.balloons-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 30px;
+    height: 40px;
+    background: rgba(255, 182, 193, 0.6);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 14px;
+    width: 2px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.wish-card.animate ~ .balloons-container .balloon,
+.stage.active .balloons-container .balloon {
+    animation: floatUp 8s ease-in-out forwards;
+}
+
+.balloon.b1 { left: 10%; animation-delay: 1s; background: rgba(255, 105, 180, 0.5); }
+.balloon.b2 { right: 15%; animation-delay: 3s; width: 25px; height: 35px; }
+.balloon.b3 { left: 20%; animation-delay: 6s; width: 35px; height: 45px; background: rgba(255, 20, 147, 0.4); }
+
+.crown-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.wish-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.wish-line {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Add staggered animation via nth-child in JS or CSS for slower reading */
+.wish-card.animate .wish-line:nth-child(1) { animation: fadeUp 1s forwards 1.0s; }
+.wish-card.animate .wish-line:nth-child(2) { animation: fadeUp 1s forwards 3.0s; }
+.wish-card.animate .wish-line:nth-child(3) { animation: fadeUp 1s forwards 5.0s; }
+.wish-card.animate .wish-line:nth-child(4) { animation: fadeUp 1s forwards 7.0s; }
+.wish-card.animate .wish-line:nth-child(5) { animation: fadeUp 1s forwards 9.0s; }
+
+/* Question Stage */
+#stage-4 {
+    top: auto;
+    bottom: 10%;
+    height: auto;
+}
+
+.question-card {
+    padding: 25px;
+    border-color: rgba(255, 182, 193, 0.3);
+}
+
+.question-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.glow-button.small {
+    padding: 10px 25px;
+    font-size: 1rem;
+    max-width: 200px;
+    animation: pulse 2s infinite;
+}
+
+/* Photo Stage */
+.photo-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.surprise-photo {
+    width: 100%;
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    object-fit: contain;
+    animation: zoomIn 1s ease-out forwards;
+}
+
+.photo-caption {
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--primary-color);
+    animation: fadeUp 1s ease forwards 0.5s;
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 20, 147, 0.5); }
+    50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 20, 147, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 20, 147, 0.5); }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawHeart {
+    from { stroke-dashoffset: 400; }
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes fillHeart {
+    from { fill: transparent; }
+    to { fill: rgba(255, 105, 180, 0.2); }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes twinkle {
+    from { opacity: 0.3; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-120vh) rotate(15deg); opacity: 0; }
+}
+
+/* Responsive constraints */
+@media (max-width: 380px) {
+    .wish-title { font-size: 1.8rem; }
+    .wish-line { font-size: 1rem; }
+    h1.welcome-text { font-size: 2rem; }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HBD Shahla🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Canvas for confetti -->
+        <canvas id="confetti-canvas"></canvas>
+
+        <!-- Stage 1: The Start Button -->
+        <section id="stage-1" class="stage active">
+            <div class="content-wrapper">
+                <h1 class="welcome-text">Hello Shahla🤍</h1>
+                <button id="start-btn" class="glow-button">
+                    <span>Click Me Birthday Queen</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Stage 2: The Drawing -->
+        <section id="stage-2" class="stage hidden">
+            <div class="drawing-container">
+                <svg id="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- A beautiful continuous line heart shape -->
+                    <path class="heart-path" d="M 50 85 C 50 85, 10 55, 15 25 C 18 10, 45 10, 50 30 C 55 10, 82 10, 85 25 C 90 55, 50 85, 50 85 Z" fill="transparent" stroke="url(#rose-gold)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="rose-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFB6C1" />
+                            <stop offset="50%" stop-color="#FF69B4" />
+                            <stop offset="100%" stop-color="#FF1493" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div id="drawing-text" class="fade-text hidden">Drawing something special...</div>
+            </div>
+        </section>
+
+        <!-- Stage 3: The Wish -->
+        <section id="stage-3" class="stage hidden">
+            <!-- Minimalist Balloons -->
+            <div class="balloons-container">
+                <div class="balloon b1"></div>
+                <div class="balloon b2"></div>
+                <div class="balloon b3"></div>
+            </div>
+            <!-- Aesthetic Background Drawing -->
+            <svg class="bg-drawing" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 80, 50 100, 100 50 L 100 0 L 0 0 Z" fill="rgba(255, 182, 193, 0.05)"/>
+                <circle cx="80" cy="20" r="2" fill="#FFB6C1" class="star" />
+                <circle cx="20" cy="40" r="1.5" fill="#FFB6C1" class="star star-delay-1" />
+                <circle cx="70" cy="70" r="2.5" fill="#FFB6C1" class="star star-delay-2" />
+                <!-- Subtle botanical line drawing in background -->
+                <path d="M 10 90 Q 30 70 25 40 Q 40 35 45 10" fill="transparent" stroke="rgba(255, 20, 147, 0.2)" stroke-width="0.5"/>
+                <path d="M 25 40 Q 15 30 5 35" fill="transparent" stroke="rgba(255, 20, 147, 0.2)" stroke-width="0.5"/>
+                <path d="M 25 40 Q 35 30 45 35" fill="transparent" stroke="rgba(255, 20, 147, 0.2)" stroke-width="0.5"/>
+            </svg>
+            <div class="glass-card wish-card">
+                <div class="crown-icon">🫂</div>
+                <h2 class="wish-title">Happy Birthday Shahla🤍</h2>
+                <div class="wish-body">
+                    <p class="wish-line">May God bless you🍀</p>
+                    <p class="wish-line">And give u many happiness 💕</p>
+                    <p class="wish-line">I hope all your wishes come true...</p>
+                    <p class="wish-line">Hope u have a great day today ✨</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 4: The Question / Surprise Trigger -->
+        <section id="stage-4" class="stage hidden">
+            <div class="glass-card question-card">
+                <h3 class="question-text">Ready for your surprise?</h3>
+                <div class="options-container">
+                    <button id="surprise-btn" class="glow-button small">
+                        <span>Click to see! 🎁</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 5: The Surprise Photo -->
+        <section id="stage-5" class="stage hidden">
+            <div class="photo-container glass-card">
+                <img src="hehe.jpeg" alt="Birthday Surprise" class="surprise-photo">
+                <p class="photo-caption">Waiting for the treat 😏</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Confetti JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
