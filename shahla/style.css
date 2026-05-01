@@ -175,6 +175,7 @@ h1.welcome-text {
     -webkit-backdrop-filter: none;
     border: 1px solid rgba(255, 182, 193, 0.2);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10vh; /* Move it higher up the screen */
 }
 
 /* Aesthetic Background Drawing */
@@ -284,13 +285,14 @@ h1.welcome-text {
 }
 
 .question-card {
-    padding: 25px;
+    padding: 15px 20px;
     border-color: rgba(255, 182, 193, 0.3);
+    max-width: 250px;
 }
 
 .question-text {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
 .options-container {
@@ -301,8 +303,8 @@ h1.welcome-text {
 }
 
 .glow-button.small {
-    padding: 10px 25px;
-    font-size: 1rem;
+    padding: 8px 20px;
+    font-size: 0.95rem;
     max-width: 200px;
     animation: pulse 2s infinite;
 }
@@ -336,7 +338,7 @@ h1.welcome-text {
 
 .caption-box {
     position: absolute;
-    bottom: 40px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.6);
@@ -429,6 +431,6 @@ h1.welcome-text {
     .wish-title { font-size: 1.8rem; }
     .wish-line { font-size: 1rem; margin-bottom: 10px; }
     h1.welcome-text { font-size: 2rem; }
-    .caption-box { bottom: 20px; padding: 10px 20px; }
+    .caption-box { bottom: 10px; padding: 10px 20px; }
     .photo-caption { font-size: 1rem; }
 }
