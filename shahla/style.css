@@ -338,7 +338,7 @@ h1.welcome-text {
 
 .caption-box {
     position: absolute;
-    bottom: 15px;
+    bottom: 10%; /* Move it up slightly to sit on the photo area */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.6);
@@ -431,6 +431,6 @@ h1.welcome-text {
     .wish-title { font-size: 1.8rem; }
     .wish-line { font-size: 1rem; margin-bottom: 10px; }
     h1.welcome-text { font-size: 2rem; }
-    .caption-box { bottom: 10px; padding: 10px 20px; }
+    .caption-box { bottom: 12%; padding: 10px 20px; }
     .photo-caption { font-size: 1rem; }
 }
