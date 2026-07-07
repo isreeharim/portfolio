@@ -87,3 +87,28 @@ form.addEventListener('submit', (e) => {
         }, 5000);
     });
 });
+
+// Mobile Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileOverlay = document.getElementById('mobile-overlay');
+const mobileNavClose = document.getElementById('mobile-nav-close');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function openMobileNav() {
+    mobileNav.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMobileNav);
+mobileNavClose.addEventListener('click', closeMobileNav);
+mobileOverlay.addEventListener('click', closeMobileNav);
+mobileLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
