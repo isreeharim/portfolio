@@ -3,19 +3,14 @@
    Parchment Sheets, Index Tabs, Fountain Pen Inks & Washi Tape
 ============================================================ */
 
-.admin-body.paper-admin-theme {
-  background-color: #f6f1e5;
+.admin-body.paper-admin-theme,
+.admin-body.sketch-admin-theme {
+  background-color: var(--color-primary, #F4F1EA);
   background-image: 
-    /* 1. Organic Paper Fiber Noise */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.12 0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0.065 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E"),
-    /* 2. Faint Graph Notebook Grid */
-    linear-gradient(rgba(15, 23, 42, 0.038) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.038) 1px, transparent 1px),
-    /* 3. Warm Ambient Desk Lamp Light on Parchment */
-    radial-gradient(ellipse at 50% 10%, #ffffff 0%, #faf6eb 40%, #f3ebd7 80%, #ebe0c7 100%);
-  background-size: 160px 160px, 24px 24px, 24px 24px, 100% 100%;
-  color: var(--ink-primary);
-  font-family: var(--font-sans);
+    linear-gradient(rgba(14, 42, 92, 0.04) 1px, transparent 1px);
+  background-size: 100% 32px;
+  color: var(--color-secondary, #0E2A5C);
+  font-family: var(--font-body, 'Patrick Hand', cursive, sans-serif);
   min-height: 100vh;
   margin: 0;
   display: flex;

@@ -83,7 +83,9 @@ function renderPortfolio() {
             const rawName = data.meta.brandName || 'Sreehari M';
             const fullName = rawName.includes('M') ? rawName : `${rawName} ${data.meta.brandDot || ''}`.trim();
             brandLogo.innerHTML = `
-                <span class="pen-icon">✒️</span>
+                <span class="logo-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
+                </span>
                 <span class="logo-text">${escapeHtml(fullName)}</span>
                 <span class="online-indicator" title="Available for opportunities"></span>
             `;
@@ -91,7 +93,7 @@ function renderPortfolio() {
 
         const loaderLogo = document.getElementById('loader-logo');
         if (loaderLogo) {
-            loaderLogo.innerHTML = `${escapeHtml(data.meta.loaderText || 'S')}<span>.</span>`;
+            loaderLogo.textContent = data.meta.loaderText || 'Sreehari M';
         }
 
         const footerText = document.getElementById('footer-text');
@@ -126,7 +128,7 @@ function renderPortfolio() {
         if (nameEl) nameEl.innerHTML = `
             <span class="name-text">${escapeHtml(data.hero.name || 'Sreehari M')}</span>
             <svg class="hand-drawn-underline" viewBox="0 0 300 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 14C50 6 150 4 296 12C210 18 100 16 20 18" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+                <path d="M4 14C50 6 150 4 296 12C210 18 100 16 20 18" stroke="#D12828" stroke-width="3.5" stroke-linecap="round"/>
             </svg>
         `;
 
