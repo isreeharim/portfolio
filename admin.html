@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="admin.css">
     
-    <!-- Typography: Patrick Hand (Handwritten Display & Body) + JetBrains Mono (Technical Monospace) -->
+    <!-- Typography: Caveat + Plus Jakarta Sans + Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script src="data.js"></script>
 </head>
-<body class="admin-body sketch-admin-theme">
+<body class="admin-body paper-admin-theme">
 
-    <!-- ── AUTH LOGIN GATE (SKETCH LEDGER) ──────────────────────── -->
+    <!-- ── AUTH LOGIN GATE (CONFIDENTIAL LEDGER) ────────────────── -->
     <div id="auth-gate" class="auth-overlay">
         <div class="auth-card paper-ledger-card">
             <div class="washi-tape-strip top-center"></div>
             
             <div class="auth-header">
                 <div class="auth-icon-stamp">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span class="lock-icon">🔒</span>
                 </div>
                 <h2>Studio Ledger Access</h2>
-                <div class="hand-ledger-note">// private sketchnote access</div>
+                <div class="hand-ledger-note">// private notebook access</div>
                 <p>Enter your secret passcode to edit your portfolio notebook.</p>
             </div>
 
@@ -40,7 +40,7 @@
                 <div id="auth-error" class="auth-error-msg"></div>
 
                 <button type="submit" class="admin-btn admin-btn-primary full-width">
-                    <span>Unlock Notebook</span>
+                    <span>Unlock Notebook ✍️</span>
                 </button>
             </form>
 
@@ -58,13 +58,11 @@
         <header class="admin-header">
             <div class="admin-brand">
                 <a href="index.html" class="admin-logo">
-                    <span class="logo-icon-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
-                    </span>
+                    <span class="pen-icon">✒️</span>
                     <span class="brand-accent">Sreehari M</span>
                 </a>
                 <div class="studio-badge">
-                    <span class="stamp-pill">SKETCH STUDIO</span>
+                    <span class="stamp-pill">NOTEBOOK STUDIO</span>
                 </div>
             </div>
 
