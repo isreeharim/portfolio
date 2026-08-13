@@ -855,7 +855,55 @@ input:checked + .slider::before { transform: translateX(18px); }
   gap: 10px;
   margin-top: 20px;
   padding-top: 14px;
-  border-top: 1px solid var(--border-paper);
+/* ── HERO METRIC PILLS ADMIN LIST ────────────────────────────── */
+.admin-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid var(--border-ink);
+  border-radius: 6px;
+  padding: 8px 12px;
+  gap: 12px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.04);
+  transition: all 0.15s ease;
+}
+
+.admin-metric-row.is-hidden {
+  opacity: 0.55;
+  background: var(--bg-paper);
+}
+
+.admin-metric-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.metric-pill-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-paper);
+  border: 1px solid var(--border-ink);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-primary);
+}
+
+.admin-metric-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ── TOASTS ──────────────────────────────────────────────────── */

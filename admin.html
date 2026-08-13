@@ -190,6 +190,70 @@
                                 <input type="text" id="hero-btn2-link" placeholder="#contact">
                             </div>
                         </div>
+
+                        <!-- ── HERO METRIC PILLS CRUD & ON/OFF TOGGLE ── -->
+                        <h3 class="subsection-title">Hero Focus &amp; Metric Pills (CRUD)</h3>
+                        
+                        <div class="admin-checkbox-field" style="margin-bottom: 16px;">
+                            <label class="custom-switch">
+                                <input type="checkbox" id="hero-input-metrics-visible" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span><strong>Show Metric Pills Row</strong> on Landing Page</span>
+                        </div>
+
+                        <div class="metric-pill-builder" style="background:var(--bg-paper); border:1.5px dashed var(--border-ink); border-radius:8px; padding:16px; margin-bottom:18px;">
+                            <label style="font-family:var(--font-hand); font-size:1.15rem; font-weight:700; color:var(--ink-primary); margin-bottom:8px; display:block;">Add / Edit Metric Pill:</label>
+                            
+                            <div class="form-grid-3" style="align-items:flex-end;">
+                                <div class="admin-field" style="margin-bottom:0;">
+                                    <label for="metric-input-icon">Icon / Emoji</label>
+                                    <input type="text" id="metric-input-icon" placeholder="⚡" style="text-align:center; font-size:1.1rem;" maxlength="4">
+                                </div>
+                                <div class="admin-field" style="margin-bottom:0; grid-column:span 2;">
+                                    <label for="metric-input-label">Label Text</label>
+                                    <input type="text" id="metric-input-label" placeholder="e.g. Full Stack & AI">
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; flex-wrap:wrap; gap:8px;">
+                                <div class="emoji-quick-picker" style="display:flex; gap:6px; flex-wrap:wrap;">
+                                    <span style="font-size:0.8rem; color:var(--ink-muted); align-self:center;">Quick icons:</span>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('⚡')">⚡</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('📐')">📐</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('🟢')">🟢</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('🚀')">🚀</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('💡')">💡</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('🛠️')">🛠️</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('🎯')">🎯</button>
+                                    <button type="button" class="chip-suggestion" onclick="setMetricEmoji('🧠')">🧠</button>
+                                </div>
+                                <div style="display:flex; gap:8px;">
+                                    <button type="button" id="btn-cancel-edit-metric" class="admin-btn admin-btn-ghost" style="display:none;" onclick="cancelEditMetric()">Cancel</button>
+                                    <button type="button" id="btn-save-metric" class="admin-btn admin-btn-secondary" onclick="handleAddOrUpdateMetric()">
+                                        <span>+ Add Metric Pill</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admin-field">
+                            <label>Current Metric Pills (Reorder, Toggle &amp; Manage):</label>
+                            <div id="hero-metrics-admin-list" class="admin-metrics-list" style="display:flex; flex-direction:column; gap:8px;">
+                                <!-- Dynamically rendered -->
+                            </div>
+                        </div>
+
+                        <div class="quick-suggestions-box" style="margin-top:12px;">
+                            <label>Preset Suggestions (Click to add):</label>
+                            <div class="suggestion-chips">
+                                <button type="button" class="chip-suggestion" onclick="quickAddMetric('⚡', 'Full Stack & AI')">+ ⚡ Full Stack &amp; AI</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddMetric('📐', 'Craft & Detail')">+ 📐 Craft &amp; Detail</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddMetric('🟢', 'Open to Work')">+ 🟢 Open to Work</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddMetric('🚀', 'Fast Learner')">+ 🚀 Fast Learner</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddMetric('💡', 'Problem Solver')">+ 💡 Problem Solver</button>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

@@ -21,6 +21,7 @@ const DEFAULT_PORTFOLIO_DATA = {
   hero: {
     badge: "Available for new opportunities",
     showBadge: true,
+    showMetrics: true,
     greeting: "Hello, I'm",
     name: "Sreehari M",
     phrases: [
@@ -37,9 +38,9 @@ const DEFAULT_PORTFOLIO_DATA = {
     secondaryBtnLink: "#contact"
   },
   stats: [
-    { label: "Core Focus", value: "Full Stack & AI" },
-    { label: "Mindset", value: "Craft & Detail" },
-    { label: "Status", value: "Open to Work" }
+    { id: "stat-1", icon: "⚡", label: "Full Stack & AI", visible: true },
+    { id: "stat-2", icon: "📐", label: "Craft & Detail", visible: true },
+    { id: "stat-3", icon: "🟢", label: "Open to Work", visible: true }
   ],
   about: {
     headingNumber: "01.",

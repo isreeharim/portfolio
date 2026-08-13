@@ -8,7 +8,9 @@ const SESSION_KEY = 'sreehari_admin_auth_session';
 let localPhrases = [];
 let localSkills = [];
 let localParagraphs = [];
+let localStats = [];
 let editingProjectId = null;
+let editingMetricId = null;
 
 // ── AUTHENTICATION GATE ───────────────────────────────────────
 function initAuth() {
@@ -95,6 +97,7 @@ function loadAllFormData() {
   // 1. Hero
   if (data.hero) {
     setCheckbox('hero-input-badge-visible', data.hero.showBadge !== false);
+    setCheckbox('hero-input-metrics-visible', data.hero.showMetrics !== false);
     setValue('hero-input-badge', data.hero.badge || data.meta?.statusBadge || '');
     setValue('hero-input-greeting', data.hero.greeting || '');
     setValue('hero-input-name', data.hero.name || '');
@@ -106,6 +109,10 @@ function loadAllFormData() {
     localPhrases = Array.isArray(data.hero.phrases) ? [...data.hero.phrases] : [];
     renderHeroPhrases();
   }
+
+  // Hero Metrics / Stats
+  localStats = Array.isArray(data.stats) ? JSON.parse(JSON.stringify(data.stats)) : [];
+  renderHeroMetricsAdminList();
 
   // 2. About
   if (data.about) {
@@ -197,11 +204,166 @@ function removeHeroPhrase(index) {
   renderHeroPhrases();
 }
 
+// ── HERO METRIC PILLS (CRUD & TOGGLE) ─────────────────────────
+function renderHeroMetricsAdminList() {
+  const container = document.getElementById('hero-metrics-admin-list');
+  if (!container) return;
+
+  if (localStats.length === 0) {
+    container.innerHTML = `<div style="font-family:var(--font-hand); font-size:1.15rem; color:var(--ink-muted); padding:10px;">No metric pills added yet. Use the builder above or presets below.</div>`;
+    return;
+  }
+
+  container.innerHTML = localStats.map((stat, idx) => {
+    const isHidden = stat.visible === false;
+    const isFirst = idx === 0;
+    const isLast = idx === localStats.length - 1;
+    const labelText = stat.label || stat.value || 'Untitled Metric';
+    const icon = stat.icon || '✦';
+
+    return `
+      <div class="admin-metric-row ${isHidden ? 'is-hidden' : ''}">
+        <div class="admin-metric-left">
+          <div class="proj-reorder-btns">
+            <button type="button" class="btn-arrow" onclick="reorderMetric(${idx}, -1)" ${isFirst ? 'disabled' : ''} title="Move Up">▲</button>
+            <button type="button" class="btn-arrow" onclick="reorderMetric(${idx}, 1)" ${isLast ? 'disabled' : ''} title="Move Down">▼</button>
+          </div>
+          <div class="metric-pill-preview">
+            <span>${escapeHtml(icon)}</span>
+            <strong>${escapeHtml(labelText)}</strong>
+          </div>
+        </div>
+        <div class="admin-metric-actions">
+          <button type="button" class="icon-action-btn" onclick="toggleMetricVisibility('${stat.id || idx}')" title="${isHidden ? 'Show on site' : 'Hide from site'}">
+            ${isHidden ? '⚪ Hidden' : '🟢 Visible'}
+          </button>
+          <button type="button" class="icon-action-btn" onclick="editMetric('${stat.id || idx}')" title="Edit pill">
+            ✏️ Edit
+          </button>
+          <button type="button" class="icon-action-btn delete-btn" onclick="deleteMetric('${stat.id || idx}')" title="Delete pill">
+            ✕
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function setMetricEmoji(emoji) {
+  const input = document.getElementById('metric-input-icon');
+  if (input) {
+    input.value = emoji;
+    input.focus();
+  }
+}
+
+function handleAddOrUpdateMetric() {
+  const iconInput = document.getElementById('metric-input-icon');
+  const labelInput = document.getElementById('metric-input-label');
+  const icon = (iconInput ? iconInput.value.trim() : '') || '✦';
+  const label = labelInput ? labelInput.value.trim() : '';
+
+  if (!label) {
+    showToast('Please enter a label for the metric pill.', 'error');
+    if (labelInput) labelInput.focus();
+    return;
+  }
+
+  if (editingMetricId) {
+    const idx = localStats.findIndex(s => (s.id || '') === editingMetricId || String(localStats.indexOf(s)) === editingMetricId);
+    if (idx !== -1) {
+      localStats[idx] = {
+        ...localStats[idx],
+        icon: icon,
+        label: label
+      };
+      showToast(`Updated metric "${label}"!`);
+    }
+    cancelEditMetric();
+  } else {
+    localStats.push({
+      id: `stat-${Date.now()}`,
+      icon: icon,
+      label: label,
+      visible: true
+    });
+    showToast(`Added metric pill "${label}"!`);
+    if (labelInput) labelInput.value = '';
+  }
+
+  renderHeroMetricsAdminList();
+}
+
+function editMetric(id) {
+  const stat = localStats.find(s => (s.id || '') === id || String(localStats.indexOf(s)) === id);
+  if (!stat) return;
+
+  editingMetricId = id;
+  const iconInput = document.getElementById('metric-input-icon');
+  const labelInput = document.getElementById('metric-input-label');
+  const saveBtn = document.getElementById('btn-save-metric');
+  const cancelBtn = document.getElementById('btn-cancel-edit-metric');
+
+  if (iconInput) iconInput.value = stat.icon || '';
+  if (labelInput) labelInput.value = stat.label || stat.value || '';
+  if (saveBtn) saveBtn.innerHTML = '<span>Save Changes ✍️</span>';
+  if (cancelBtn) cancelBtn.style.display = 'inline-flex';
+  if (labelInput) labelInput.focus();
+}
+
+function cancelEditMetric() {
+  editingMetricId = null;
+  const iconInput = document.getElementById('metric-input-icon');
+  const labelInput = document.getElementById('metric-input-label');
+  const saveBtn = document.getElementById('btn-save-metric');
+  const cancelBtn = document.getElementById('btn-cancel-edit-metric');
+
+  if (iconInput) iconInput.value = '';
+  if (labelInput) labelInput.value = '';
+  if (saveBtn) saveBtn.innerHTML = '<span>+ Add Metric Pill</span>';
+  if (cancelBtn) cancelBtn.style.display = 'none';
+}
+
+function quickAddMetric(icon, label) {
+  localStats.push({
+    id: `stat-${Date.now()}`,
+    icon: icon,
+    label: label,
+    visible: true
+  });
+  renderHeroMetricsAdminList();
+  showToast(`Added "${icon} ${label}"!`);
+}
+
+function toggleMetricVisibility(id) {
+  const idx = localStats.findIndex(s => (s.id || '') === id || String(localStats.indexOf(s)) === id);
+  if (idx !== -1) {
+    localStats[idx].visible = localStats[idx].visible === false ? true : false;
+    renderHeroMetricsAdminList();
+  }
+}
+
+function deleteMetric(id) {
+  localStats = localStats.filter(s => (s.id || '') !== id && String(localStats.indexOf(s)) !== id);
+  renderHeroMetricsAdminList();
+  showToast('Metric pill removed.');
+}
+
+function reorderMetric(index, direction) {
+  const target = index + direction;
+  if (target < 0 || target >= localStats.length) return;
+  const temp = localStats[index];
+  localStats[index] = localStats[target];
+  localStats[target] = temp;
+  renderHeroMetricsAdminList();
+}
+
 function saveHeroSection() {
   const data = getPortfolioData();
   data.hero = {
     ...data.hero,
     showBadge: document.getElementById('hero-input-badge-visible') ? document.getElementById('hero-input-badge-visible').checked : true,
+    showMetrics: document.getElementById('hero-input-metrics-visible') ? document.getElementById('hero-input-metrics-visible').checked : true,
     badge: document.getElementById('hero-input-badge').value.trim(),
     greeting: document.getElementById('hero-input-greeting').value.trim(),
     name: document.getElementById('hero-input-name').value.trim(),
@@ -212,10 +374,11 @@ function saveHeroSection() {
     secondaryBtnLink: document.getElementById('hero-btn2-link').value.trim(),
     phrases: [...localPhrases]
   };
+  data.stats = [...localStats];
 
   const res = savePortfolioData(data);
   if (res.success) {
-    showToast('Hero section saved successfully!');
+    showToast('Hero section & metric pills saved successfully!');
   } else {
     showToast('Error saving hero section.', 'error');
   }

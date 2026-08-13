@@ -149,6 +149,26 @@ function renderPortfolio() {
             charIndex = 0;
             isDeleting = false;
         }
+
+        // Hero Metrics / Focus Pills (CRUD & Toggle Render)
+        const metricsContainer = document.getElementById('hero-metrics');
+        if (metricsContainer) {
+            const showMetrics = data.hero.showMetrics !== false;
+            const statsList = Array.isArray(data.stats) ? data.stats : [];
+            const visibleStats = statsList.filter(s => s.visible !== false);
+
+            if (!showMetrics || visibleStats.length === 0) {
+                metricsContainer.style.display = 'none';
+            } else {
+                metricsContainer.style.display = 'flex';
+                metricsContainer.innerHTML = visibleStats.map(s => `
+                    <div class="metric-pill">
+                        <span class="metric-icon">${escapeHtml(s.icon || '✦')}</span>
+                        <span class="metric-label">${escapeHtml(s.label || s.value || '')}</span>
+                    </div>
+                `).join('');
+            }
+        }
     }
 
     // C. Sidebars & Socials
