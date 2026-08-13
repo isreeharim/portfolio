@@ -860,6 +860,9 @@ input:checked + .slider::before { transform: translateX(18px); }
   gap: 10px;
   margin-top: 20px;
   padding-top: 14px;
+  border-top: 1.5px dashed var(--border-paper);
+}
+
 /* ── HERO METRIC PILLS ADMIN LIST ────────────────────────────── */
 .admin-metrics-list {
   display: flex;
@@ -872,12 +875,13 @@ input:checked + .slider::before { transform: translateX(18px); }
   align-items: center;
   justify-content: space-between;
   background: #ffffff;
-  border: 1px solid var(--border-ink);
+  border: 1.5px solid var(--border-ink);
   border-radius: 6px;
   padding: 8px 12px;
   gap: 12px;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.04);
   transition: all 0.15s ease;
+  flex-wrap: wrap;
 }
 
 .admin-metric-row.is-hidden {
@@ -890,6 +894,7 @@ input:checked + .slider::before { transform: translateX(18px); }
   align-items: center;
   gap: 10px;
   flex: 1;
+  min-width: 180px;
 }
 
 .metric-pill-preview {
@@ -898,7 +903,7 @@ input:checked + .slider::before { transform: translateX(18px); }
   gap: 6px;
   background: var(--bg-paper);
   border: 1px solid var(--border-ink);
-  padding: 4px 10px;
+  padding: 5px 10px;
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -941,65 +946,254 @@ input:checked + .slider::before { transform: translateX(18px); }
   border-color: var(--ink-red);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────── */
+/* ── COMPREHENSIVE MOBILE RESPONSIVE SYSTEM ──────────────────── */
 @media (max-width: 900px) {
-  .admin-layout { flex-direction: column; }
+  .admin-layout {
+    flex-direction: column;
+  }
+
   .admin-sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 2px solid var(--border-ink);
+    position: sticky;
+    top: 0;
+    z-index: 95;
+    background: #ffffff;
+    padding: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .admin-nav { flex-direction: row; position: static; gap: 4px; padding: 6px; }
-  .nav-item { white-space: nowrap; padding: 8px 12px; font-size: 0.85rem; }
-  .admin-content { padding: 24px 16px; }
-  .form-grid-2, .form-grid-3, .settings-grid { grid-template-columns: 1fr; }
-  .admin-project-card { flex-direction: column; align-items: flex-start; }
-  .proj-card-actions { width: 100%; justify-content: flex-end; }
+
+  .admin-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-hand-title {
+    display: none;
+  }
+
+  .admin-nav {
+    flex-direction: row;
+    position: static;
+    gap: 6px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border-paper);
+    border-radius: 6px;
+    background: var(--bg-paper);
+    touch-action: manipulation;
+  }
+
+  .nav-item.active {
+    background: var(--highlighter-yellow);
+    border-color: var(--border-ink);
+    color: var(--ink-primary);
+    font-weight: 700;
+  }
+
+  .admin-content {
+    padding: 20px 14px 48px;
+    max-width: 100%;
+  }
+
+  .form-grid-2,
+  .form-grid-3,
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .admin-project-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .proj-card-left {
+    width: 100%;
+  }
+
+  .proj-card-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border-paper);
+  }
+
+  .icon-action-btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+  /* Prevent iOS Safari zooming on focus */
+  .admin-field input,
+  .admin-field textarea,
+  .pin-input-group input,
+  .search-input-wrapper input {
+    font-size: 16px !important;
+  }
+
   .admin-header {
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
     padding: 12px 14px;
   }
+
+  .admin-brand {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .admin-actions {
     width: 100%;
     display: flex;
-    gap: 8px;
+    gap: 6px;
   }
+
   .admin-actions .admin-btn {
     flex: 1;
     justify-content: center;
-    font-size: 0.8rem;
-    padding: 8px 10px;
+    font-size: 0.76rem;
+    padding: 8px 6px;
+    min-height: 38px;
+    white-space: nowrap;
   }
+
   .panel-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    margin-bottom: 16px;
   }
+
+  .panel-header h2 {
+    font-size: 1.4rem;
+  }
+
   .panel-header .admin-btn {
     width: 100%;
     justify-content: center;
+    min-height: 46px;
+    font-size: 0.95rem;
   }
+
   .panel-card {
-    padding: 20px 14px;
+    padding: 18px 12px;
+    border-radius: 8px;
   }
-  .auth-card {
-    padding: 28px 18px 22px;
+
+  .phrase-input-container {
+    flex-direction: column;
+    gap: 8px;
   }
-  .toast-container {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+
+  .phrase-input-container .admin-btn {
+    width: 100%;
+    min-height: 42px;
   }
-  .toast {
-    font-size: 1.1rem;
+
+  .projects-table-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+  }
+
+  .search-input-wrapper input {
+    width: 100%;
+  }
+
+  .projects-table-toolbar .admin-btn {
     width: 100%;
     justify-content: center;
+    min-height: 42px;
+  }
+
+  .auth-overlay {
+    padding: 12px;
+  }
+
+  .auth-card {
+    padding: 28px 16px 20px;
+    border-radius: 10px;
+  }
+
+  .auth-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .pin-input-group input {
+    font-size: 1.2rem !important;
+    padding: 12px 40px 12px 12px;
+  }
+
+  .auth-form .admin-btn {
+    min-height: 48px;
+    font-size: 1rem;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .modal-card {
+    max-height: 88vh;
+    border-radius: 14px 14px 0 0;
+    padding: 24px 16px 20px;
+  }
+
+  .modal-switches {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .modal-actions .admin-btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .toast {
+    font-size: 1.05rem;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
   }
 }
