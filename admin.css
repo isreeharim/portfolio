@@ -949,11 +949,57 @@ input:checked + .slider::before { transform: translateX(18px); }
     border-right: none;
     border-bottom: 2px solid var(--border-ink);
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .admin-nav { flex-direction: row; position: static; }
-  .nav-item { white-space: nowrap; }
+  .admin-nav { flex-direction: row; position: static; gap: 4px; padding: 6px; }
+  .nav-item { white-space: nowrap; padding: 8px 12px; font-size: 0.85rem; }
   .admin-content { padding: 24px 16px; }
   .form-grid-2, .form-grid-3, .settings-grid { grid-template-columns: 1fr; }
   .admin-project-card { flex-direction: column; align-items: flex-start; }
   .proj-card-actions { width: 100%; justify-content: flex-end; }
+}
+
+@media (max-width: 600px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+  .admin-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+  .admin-actions .admin-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .panel-header .admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .panel-card {
+    padding: 20px 14px;
+  }
+  .auth-card {
+    padding: 28px 18px 22px;
+  }
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+  .toast {
+    font-size: 1.1rem;
+    width: 100%;
+    justify-content: center;
+  }
 }

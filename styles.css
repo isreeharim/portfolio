@@ -1521,7 +1521,7 @@ ul { list-style: none; }
   color: var(--color-neutral);
 }
 
-/* ── 14. RESPONSIVE BREAKPOINTS (COLLAPSE UNDER 768px) ───────── */
+/* ── 14. RESPONSIVE BREAKPOINTS (COMPREHENSIVE MOBILE SYSTEM) ── */
 @media (max-width: 1024px) {
   .hero-layout-grid {
     grid-template-columns: 1fr;
@@ -1529,30 +1529,263 @@ ul { list-style: none; }
   }
   .about-zigzag-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
   .highlights-asymmetric-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
+  .fixed-side { display: none; }
 }
 
 @media (max-width: 768px) {
+  .sketch-container {
+    padding: 0 16px;
+  }
+
+  .notebook-sheet-margin {
+    left: 10px;
+    opacity: 0.3;
+    width: 1.5px;
+  }
+
+  .section-layout {
+    padding: 3.5rem 0 0;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    white-space: normal;
+  }
+
+  .section-title-line {
+    max-width: 120px;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+  }
+
+  /* Navbar Mobile Layout */
+  .navbar-wrapper {
+    top: 10px;
+    padding: 0 12px;
+  }
+
+  .navbar-capsule {
+    padding: 6px 14px;
+    gap: 10px;
+  }
+
   .nav-menu { display: none; }
-  .hamburger { display: flex; }
-  
+
+  .hamburger {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    touch-action: manipulation;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  /* Hero Section Mobile */
+  .hero-section {
+    padding-top: calc(var(--nav-height) + 16px);
+    padding-bottom: 30px;
+    min-height: auto;
+  }
+
+  .hero-intro {
+    margin-bottom: 12px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+    line-height: 1.15;
+  }
+
+  .hero-typewriter-wrapper {
+    font-size: clamp(1.2rem, 5vw, 1.55rem);
+    margin-bottom: 16px;
+  }
+
+  .hero-summary {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .hero-metrics-row {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .sketch-doodle-card {
+    max-width: 100%;
+    padding: 26px 18px 22px;
+    transform: none;
+  }
+
+  .sketch-doodle-card:hover {
+    transform: none;
+  }
+
+  /* Highlights & Projects Mobile */
   .highlights-asymmetric-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
-  .form-row-2 {
-    grid-template-columns: 1fr;
+
+  .highlight-sketch-card {
+    transform: none !important;
+    padding: 28px 18px 32px;
   }
-  
+
+  .highlight-sketch-card:hover {
+    transform: translateY(-2px) !important;
+  }
+
   .project-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  
+
+  .project-card {
+    transform: none !important;
+    padding: 28px 18px 32px;
+    min-height: auto;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  /* Contact Postcard Mobile */
   .postcard-wrapper {
-    padding: 32px 20px;
+    padding: 32px 18px 28px;
+  }
+
+  .postcard-stamp-box {
+    position: static;
+    margin-bottom: 16px;
+    justify-content: flex-end;
+  }
+
+  .contact-heading {
+    font-size: 1.75rem;
+  }
+
+  .contact-desc {
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* 16px font-size prevents iOS Safari zoom on focus */
+  .form-field-group input,
+  .form-field-group textarea {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  .btn-primary-sketch,
+  .btn-secondary-sketch {
+    min-height: 48px;
+  }
+
+  /* Footer Mobile */
+  .site-footer {
+    padding: 38px 16px 28px;
+    margin-top: 40px;
+  }
+
+  .footer-copy {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  .hero-name {
+    font-size: 2.35rem;
+  }
+
+  .hero-greeting {
+    font-size: 1.2rem;
+  }
+
+  .hero-typewriter-wrapper {
+    font-size: 1.25rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-primary-sketch,
+  .btn-secondary-sketch {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 1.15rem;
+  }
+
+  .metric-pill {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 8px 12px;
+  }
+
+  .sketch-card {
+    padding: 24px 16px 30px;
+  }
+
+  .graph-topbar {
+    padding: 10px 12px;
+  }
+
+  .graph-body {
+    padding: 12px 10px;
+    font-size: 0.74rem;
+  }
+
+  .postcard-wrapper {
+    padding: 28px 14px 24px;
+  }
+
+  .contact-heading {
+    font-size: 1.55rem;
   }
 }
 
