@@ -3,62 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" id="meta-desc" content="Sreehari M — Software Developer & Engineer specializing in full-stack web development, AI/ML, and crafting human-centered digital experiences.">
-    <title id="site-title">Sreehari M | Software Developer & Builder</title>
+    <meta name="description" id="meta-desc" content="Sreehari M — Software Developer & Engineer. Notebook portfolio showcasing full-stack systems, AI/ML, and crafted software.">
+    <title id="site-title">Sreehari M | Developer's Notebook</title>
     
     <!-- Design System Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Typography: Inter + Fira Code for precision optical hierarchy -->
+    <!-- Typography: Caveat (Handwritten Ink) + Plus Jakarta Sans + Fira Code (Monospace Notes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     
     <!-- Data Store & Application Logic -->
     <script src="data.js"></script>
     <script src="script.js" defer></script>
 </head>
-<body class="site-body">
+<body class="site-body paper-theme">
 
     <!-- ── PAGE LOADER ───────────────────────────────────────────── -->
     <div id="loader" class="page-loader" aria-hidden="true">
         <div class="loader-inner">
+            <div class="notebook-pen-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+            </div>
             <div class="loader-mark" id="loader-logo">S<span>.</span></div>
-            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="loader-subtext">Opening notebook...</div>
         </div>
     </div>
 
-    <!-- ── AMBIENT BACKGROUND SYSTEM ─────────────────────────────── -->
-    <canvas id="particles-canvas" class="ambient-canvas"></canvas>
-    <div class="ambient-mesh">
-        <div class="mesh-orb mesh-1" id="blob"></div>
-        <div class="mesh-orb mesh-2" id="blob2"></div>
-        <div class="mesh-orb mesh-3"></div>
-    </div>
-    <div class="ambient-grain"></div>
+    <!-- ── NOTEBOOK DESK BACKGROUND & MARGIN LINE ────────────────── -->
+    <div class="desk-canvas"></div>
+    <div class="notebook-sheet-margin"></div>
 
-    <!-- ── FLOATING GLASS CAPSULE NAVBAR ─────────────────────────── -->
+    <!-- ── FLOATING NOTEBOOK TABS NAVBAR ─────────────────────────── -->
     <header class="navbar-wrapper" id="navbar">
         <div class="navbar-capsule">
             <a href="#hero" class="nav-logo" id="nav-logo" aria-label="Home">
+                <span class="pen-icon">✒️</span>
                 <span class="logo-text">Sreehari</span><span class="logo-dot">.</span><span class="logo-sub">M</span>
                 <span class="online-indicator" title="Available for opportunities"></span>
             </a>
 
             <nav class="nav-menu" aria-label="Main Navigation">
                 <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link active"><span>//</span> Home</a></li>
-                    <li><a href="#about" class="nav-link"><span>01.</span> About</a></li>
-                    <li><a href="#highlights" class="nav-link"><span>02.</span> Focus</a></li>
-                    <li><a href="#projects" class="nav-link"><span>03.</span> Projects</a></li>
-                    <li><a href="#contact" class="nav-link"><span>04.</span> Contact</a></li>
+                    <li><a href="#hero" class="nav-link active"><span class="tab-doodle">✦</span> Home</a></li>
+                    <li><a href="#about" class="nav-link"><span class="tab-num">01.</span> About</a></li>
+                    <li><a href="#highlights" class="nav-link"><span class="tab-num">02.</span> Focus</a></li>
+                    <li><a href="#projects" class="nav-link"><span class="tab-num">03.</span> Projects</a></li>
+                    <li><a href="#contact" class="nav-link"><span class="tab-num">04.</span> Contact</a></li>
                 </ul>
             </nav>
 
             <div class="nav-actions">
                 <a href="#contact" class="nav-cta-btn">
-                    <span>Let's Talk</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    <span>Leave a Note ✍️</span>
                 </a>
                 <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
                     <span></span><span></span><span></span>
@@ -70,17 +68,18 @@
     <!-- ── MOBILE NAVIGATION DRAWER ──────────────────────────────── -->
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-header">
-            <div class="mobile-brand">Sreehari<span class="dot">.</span>M</div>
+            <div class="mobile-brand">Sreehari<span class="dot">.</span>M <span class="hand-tag">// notebook</span></div>
             <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">✕</button>
         </div>
         <ul class="mobile-links-list">
-            <li><a href="#hero" class="mobile-link"><span>00.</span> Home</a></li>
-            <li><a href="#about" class="mobile-link"><span>01.</span> About</a></li>
-            <li><a href="#highlights" class="mobile-link"><span>02.</span> Focus</a></li>
-            <li><a href="#projects" class="mobile-link"><span>03.</span> Projects</a></li>
-            <li><a href="#contact" class="mobile-link"><span>04.</span> Contact</a></li>
+            <li><a href="#hero" class="mobile-link"><span>00.</span> Home Page</a></li>
+            <li><a href="#about" class="mobile-link"><span>01.</span> About &amp; Story</a></li>
+            <li><a href="#highlights" class="mobile-link"><span>02.</span> Focus Areas</a></li>
+            <li><a href="#projects" class="mobile-link"><span>03.</span> Selected Works</a></li>
+            <li><a href="#contact" class="mobile-link"><span>04.</span> Send a Message</a></li>
         </ul>
         <div class="mobile-nav-footer">
+            <div class="hand-note">Ink &amp; Paper Edition</div>
             <a href="mailto:isreeharim@gmail.com" class="mobile-email" id="mobile-email-link">isreeharim@gmail.com</a>
         </div>
     </div>
@@ -111,77 +110,82 @@
         <div class="side-line"></div>
     </div>
 
-    <!-- ── MAIN CONTENT ─────────────────────────────────────────── -->
-    <main id="main-content">
+    <!-- ── MAIN NOTEBOOK CONTENT ─────────────────────────────────── -->
+    <main id="main-content" class="notebook-container">
 
         <!-- ════ SECTION: HERO ════ -->
         <section id="hero" class="hero-section">
             <div class="hero-container">
-                
-                <!-- Status Pill Badge -->
-                <div class="hero-status-pill fade-up" style="--delay: 0.1s">
-                    <span class="status-pulse-dot"></span>
+
+                <!-- Post-It Sticky Status Note -->
+                <div class="sticky-status-note fade-up" style="--delay: 0.1s">
+                    <span class="washi-tape-strip"></span>
+                    <span class="pin-dot">📌</span>
                     <span class="status-text" id="hero-badge">Available for new opportunities</span>
                 </div>
 
-                <!-- Main Greeting & Name -->
+                <!-- Handwritten Greeting & Name -->
                 <div class="hero-intro fade-up" style="--delay: 0.2s">
+                    <div class="hand-annotation">Hello there! ✍️</div>
                     <p class="hero-greeting" id="hero-greeting">Hello, I'm</p>
-                    <h1 class="hero-name" id="hero-name">Sreehari M<span class="hero-period">.</span></h1>
+                    <h1 class="hero-name" id="hero-name">
+                        <span class="name-text">Sreehari M</span><span class="hero-period">.</span>
+                        <svg class="hand-drawn-underline" viewBox="0 0 300 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 14C50 6 150 4 296 12C210 18 100 16 20 18" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </h1>
                 </div>
 
-                <!-- Dynamic Typewriter Line -->
+                <!-- Dynamic Typewriter Line with Inked Cursor -->
                 <div class="hero-typewriter-wrapper fade-up" style="--delay: 0.3s">
                     <span class="typewriter-prefix">I </span>
-                    <span class="typewriter-content" id="typed-text">engineer resilient full-stack systems.</span>
+                    <span class="typewriter-content highlighter-highlight" id="typed-text">engineer resilient full-stack systems.</span>
                     <span class="typewriter-cursor">|</span>
                 </div>
 
-                <!-- Bio Summary -->
+                <!-- Bio Summary Inked Paragraph -->
                 <p class="hero-summary fade-up" id="hero-summary" style="--delay: 0.4s">
                     A passionate Software Developer specializing in building high-performance web applications and intelligent systems. Focused on craft, accessibility, and invisible design details that make software feel great.
                 </p>
 
-                <!-- Action CTA Buttons -->
+                <!-- Stamped CTA Buttons -->
                 <div class="hero-actions fade-up" style="--delay: 0.5s">
-                    <a href="#projects" class="btn-shine-primary" id="hero-projects-btn">
+                    <a href="#projects" class="btn-stamped-primary" id="hero-projects-btn">
                         <span>Explore My Work</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
-                    <a href="#contact" class="btn-glass-secondary" id="hero-contact-btn">
+                    <a href="#contact" class="btn-paper-secondary" id="hero-contact-btn">
                         <span>Get in Touch</span>
                     </a>
                 </div>
 
-                <!-- Quick Metric Badges Row -->
+                <!-- Quick Metric Notebook Tags -->
                 <div class="hero-metrics-row fade-up" id="hero-metrics" style="--delay: 0.6s">
                     <div class="metric-pill">
                         <span class="metric-icon">⚡</span>
                         <span class="metric-label">Full Stack &amp; AI</span>
                     </div>
                     <div class="metric-pill">
-                        <span class="metric-icon">🎯</span>
+                        <span class="metric-icon">📐</span>
                         <span class="metric-label">Craft &amp; Detail</span>
                     </div>
                     <div class="metric-pill">
-                        <span class="metric-icon">🚀</span>
+                        <span class="metric-icon">🟢</span>
                         <span class="metric-label">Open to Work</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Scroll Down Indicator -->
+            <!-- Scroll Cue -->
             <div class="scroll-cue">
                 <a href="#about" aria-label="Scroll to About Section">
-                    <div class="scroll-mouse-icon">
-                        <div class="scroll-wheel-pip"></div>
-                    </div>
+                    <span class="hand-scroll-text">scroll down ↓</span>
                 </a>
             </div>
         </section>
 
-        <!-- ════ SECTION: ABOUT ════ -->
+        <!-- ════ SECTION: ABOUT & PHILOSOPHY ════ -->
         <section id="about" class="section-layout reveal-on-scroll">
             <div class="section-header">
                 <h2 class="section-title">
@@ -189,11 +193,13 @@
                     <span id="about-title-text">About &amp; Philosophy</span>
                 </h2>
                 <div class="section-title-line"></div>
+                <div class="header-doodle">📝 field notes</div>
             </div>
 
             <div class="about-grid">
                 <!-- Narrative Text & Skills -->
-                <div class="about-text-column">
+                <div class="about-text-column paper-card">
+                    <div class="washi-tape-top"></div>
                     <div class="about-paragraphs-flow" id="about-paragraphs">
                         <p>Hi, I'm Sreehari 👋 I'm a developer who cares deeply about the intersection of engineering rigor and thoughtful user experience.</p>
                         <p>My journey started out of curiosity — pulling systems apart, understanding how things tick under the hood, and building from scratch. Over time, that curiosity evolved into designing and engineering production-grade web systems and exploring modern AI/ML applications.</p>
@@ -201,7 +207,10 @@
                     </div>
 
                     <div class="skills-showcase-box">
-                        <h3 class="skills-box-title">Technologies &amp; Toolkit</h3>
+                        <div class="skills-box-title">
+                            <span>Toolkit &amp; Technologies</span>
+                            <span class="hand-sub">// verified skills</span>
+                        </div>
                         <ul class="skills-pills-cloud" id="skills-list">
                             <li>JavaScript (ESNext)</li>
                             <li>TypeScript</li>
@@ -219,22 +228,18 @@
                     </div>
                 </div>
 
-                <!-- Interactive Terminal Code Card -->
+                <!-- Engineering Graph Paper Code Sheet -->
                 <div class="about-card-column">
-                    <div class="terminal-card" id="code-card">
-                        <div class="terminal-topbar">
-                            <div class="terminal-dots">
-                                <span class="dot-red"></span>
-                                <span class="dot-yellow"></span>
-                                <span class="dot-green"></span>
-                            </div>
-                            <div class="terminal-title">developer.ts</div>
+                    <div class="graph-sheet-card" id="code-card">
+                        <div class="washi-tape-strip top-center"></div>
+                        <div class="graph-topbar">
+                            <div class="sheet-stamp">DEV_PROFILE.TS</div>
                             <button type="button" class="terminal-copy-btn" id="copy-code-btn" title="Copy code snippet" aria-label="Copy Code">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                                 <span class="copy-tooltip">Copied!</span>
                             </button>
                         </div>
-                        <div class="terminal-body">
+                        <div class="graph-body">
                             <pre><code id="code-card-content"><span class="t-kw">const</span> <span class="t-fn">developer</span>: <span class="t-type">DeveloperProfile</span> = {
   name:     <span class="t-str">"Sreehari M"</span>,
   role:     <span class="t-str">"Software Developer"</span>,
@@ -243,6 +248,9 @@
   coffee:   <span class="t-bool">true</span>,
   open:     <span class="t-bool">true</span>
 };</code></pre>
+                        </div>
+                        <div class="graph-footer-note">
+                            <span class="hand-comment">/* crafted with love &amp; clean code */</span>
                         </div>
                     </div>
                 </div>
@@ -257,31 +265,38 @@
                     <span>Core Focus Areas</span>
                 </h2>
                 <div class="section-title-line"></div>
+                <div class="header-doodle">💡 focus index</div>
             </div>
 
             <div class="highlights-grid">
-                <div class="highlight-card">
+                <div class="highlight-paper-card card-tilt-left">
+                    <div class="washi-tape-strip tape-left"></div>
                     <div class="highlight-icon-box">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     </div>
                     <h3>Full-Stack Systems</h3>
                     <p>Architecting responsive frontends and resilient backend microservices with modern TypeScript, Node.js, and database systems.</p>
+                    <div class="card-hand-tag">01 // Architecture</div>
                 </div>
 
-                <div class="highlight-card">
+                <div class="highlight-paper-card card-tilt-center">
+                    <div class="washi-tape-strip tape-center"></div>
                     <div class="highlight-icon-box">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
                     </div>
                     <h3>AI &amp; Machine Learning</h3>
                     <p>Building intelligent tools, LLM pipelines, and automated workflows that transform data into actionable user experiences.</p>
+                    <div class="card-hand-tag">02 // Intelligence</div>
                 </div>
 
-                <div class="highlight-card">
+                <div class="highlight-paper-card card-tilt-right">
+                    <div class="washi-tape-strip tape-right"></div>
                     <div class="highlight-icon-box">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
                     </div>
                     <h3>Design Engineering</h3>
                     <p>Executing pixel-level UI polish, tactile `:active` micro-interactions, custom bezier curves, and accessible design patterns.</p>
+                    <div class="card-hand-tag">03 // Craft</div>
                 </div>
             </div>
         </section>
@@ -294,6 +309,7 @@
                     <span>Selected Works</span>
                 </h2>
                 <div class="section-title-line"></div>
+                <div class="header-doodle">📂 project log</div>
             </div>
 
             <p class="section-subtitle">
@@ -305,12 +321,18 @@
             </div>
         </section>
 
-        <!-- ════ SECTION: CONTACT ════ -->
+        <!-- ════ SECTION: CONTACT (AIRMAIL / MEMO STYLE) ════ -->
         <section id="contact" class="section-layout reveal-on-scroll contact-section">
-            <div class="contact-card-wrapper">
-                <div class="contact-glow-accent"></div>
-                
-                <div class="contact-inner">
+            <div class="postcard-wrapper">
+                <div class="postcard-stamp-box">
+                    <div class="postage-stamp">
+                        <span>AIR MAIL</span>
+                        <div class="stamp-icon">✉️</div>
+                    </div>
+                    <div class="postage-lines"></div>
+                </div>
+
+                <div class="postcard-inner">
                     <p class="contact-overline" id="contact-overline">04. What's Next?</p>
                     <h2 class="contact-heading" id="contact-heading">Let's Build Something Together</h2>
                     <p class="contact-desc" id="contact-desc">
@@ -331,14 +353,14 @@
 
                         <div class="form-field-group">
                             <label for="contact-message">Your Message</label>
-                            <textarea id="contact-message" name="message" required rows="5" placeholder="Tell me about your project or opportunity..."></textarea>
+                            <textarea id="contact-message" name="message" required rows="5" placeholder="Write a note here..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit-action" id="submit-btn">
-                            <span id="submit-btn-text">Send Message</span>
+                        <button type="submit" class="btn-submit-stamp" id="submit-btn">
+                            <span id="submit-btn-text">Send Letter 📬</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         </button>
-                        
+
                         <div id="form-status" class="form-status" role="alert"></div>
                     </form>
                 </div>
@@ -350,8 +372,8 @@
     <!-- ── FOOTER ────────────────────────────────────────────────── -->
     <footer class="site-footer">
         <div class="footer-content">
-            <p class="footer-copy" id="footer-text">Designed &amp; Engineered by <span class="accent-text">Sreehari M</span></p>
-            <p class="footer-sub">Crafted with physics-based motion &amp; invisible design details.</p>
+            <p class="footer-copy" id="footer-text">Designed &amp; Engineered by <span class="ink-blue-text">Sreehari M</span></p>
+            <p class="footer-sub">Written in ink on digital parchment • Handcrafted with care.</p>
         </div>
     </footer>
 
