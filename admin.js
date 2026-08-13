@@ -94,6 +94,7 @@ function loadAllFormData() {
 
   // 1. Hero
   if (data.hero) {
+    setValue('hero-input-badge', data.hero.badge || data.meta?.statusBadge || '');
     setValue('hero-input-greeting', data.hero.greeting || '');
     setValue('hero-input-name', data.hero.name || '');
     setValue('hero-input-summary', data.hero.summary || '');
@@ -198,6 +199,7 @@ function saveHeroSection() {
   const data = getPortfolioData();
   data.hero = {
     ...data.hero,
+    badge: document.getElementById('hero-input-badge').value.trim(),
     greeting: document.getElementById('hero-input-greeting').value.trim(),
     name: document.getElementById('hero-input-name').value.trim(),
     summary: document.getElementById('hero-input-summary').value.trim(),

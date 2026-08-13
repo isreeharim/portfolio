@@ -1,6 +1,6 @@
 /* ============================================================
    PORTFOLIO DATA STORE & STATE MANAGEMENT
-   Centralized data source with localStorage persistence
+   Centralized data source with localStorage persistence & backward compatibility
 ============================================================ */
 
 const STORAGE_KEY = 'sreehari_portfolio_data';
@@ -9,62 +9,92 @@ const DEFAULT_PIN = 'admin123';
 
 const DEFAULT_PORTFOLIO_DATA = {
   meta: {
-    siteTitle: "Sreehari M | Developer Portfolio",
-    metaDescription: "Sreehari M — Software Developer Portfolio. Full-stack developer specializing in web development, AI/ML, and building human-centered digital experiences.",
+    siteTitle: "Sreehari M | Software Developer & Builder",
+    metaDescription: "Sreehari M — Software Developer & Engineer specializing in full-stack web development, AI/ML, and crafting human-centered digital experiences.",
     brandName: "Sreehari",
     brandDot: "M",
     loaderText: "S",
-    footerText: "Designed & Built by Sreehari M"
+    statusBadge: "Available for new opportunities",
+    footerText: "Designed & Engineered by Sreehari M"
   },
   hero: {
-    greeting: "Hi, my name is",
-    name: "Sreehari",
+    badge: "Available for new opportunities",
+    greeting: "Hello, I'm",
+    name: "Sreehari M",
     phrases: [
-      "build things for the web.",
-      "craft digital experiences.",
-      "turn ideas into reality.",
-      "love clean, impactful code."
+      "engineer resilient full-stack systems.",
+      "craft human-centered digital products.",
+      "build intelligent AI-powered apps.",
+      "obsess over UI polish & micro-interactions.",
+      "turn ambitious ideas into reality."
     ],
-    summary: "I'm a software developer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products.",
-    primaryBtnText: "Check out my work",
+    summary: "A passionate Software Developer specializing in building high-performance web applications and intelligent systems. Focused on craft, accessibility, and invisible design details that make software feel great.",
+    primaryBtnText: "Explore My Work",
     primaryBtnLink: "#projects",
-    secondaryBtnText: "Get in touch",
+    secondaryBtnText: "Get in Touch",
     secondaryBtnLink: "#contact"
   },
+  stats: [
+    { label: "Core Focus", value: "Full Stack & AI" },
+    { label: "Mindset", value: "Craft & Detail" },
+    { label: "Status", value: "Open to Work" }
+  ],
   about: {
     headingNumber: "01.",
-    headingTitle: "About Me",
+    headingTitle: "About & Philosophy",
     paragraphs: [
-      "Hi, I'm Sreehari 👋\nI enjoy building things that live on the internet.",
-      "My journey into tech started out of curiosity — experimenting, breaking things, and learning by doing. Over time, that curiosity turned into a strong interest in web development and intelligent systems.",
-      "Today, I focus on creating meaningful digital experiences and working on projects in AI, ML, and full-stack development. I love combining creativity with technology to build solutions that actually make an impact."
+      "Hi, I'm Sreehari 👋 I'm a developer who cares deeply about the intersection of engineering rigor and thoughtful user experience.",
+      "My journey started out of curiosity — pulling systems apart, understanding how things tick under the hood, and building from scratch. Over time, that curiosity evolved into designing and engineering production-grade web systems and exploring modern AI/ML applications.",
+      "I believe great software is built on unseen details: instant feedback, sensible defaults, rock-solid reliability, and interfaces that feel effortless to use."
     ],
     codeCard: {
-      name: "Sreehari",
-      role: "Full Stack",
-      passion: "Coding",
+      name: "Sreehari M",
+      role: "Software Developer",
+      location: "India",
+      passion: "Crafting Great Software",
       coffee: true,
       open: true
     },
     skills: [
-      "JavaScript",
-      "Python",
-      "Node.js",
-      "React",
-      "Express.js",
-      "MongoDB",
+      "JavaScript (ESNext)",
       "TypeScript",
-      "Git & GitHub",
+      "Python",
+      "React",
+      "Node.js",
+      "Express.js",
+      "Next.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Tailwind CSS",
       "REST APIs",
-      "Tailwind CSS"
+      "Git & GitHub",
+      "Docker",
+      "FastAPI"
     ]
   },
+  highlights: [
+    {
+      title: "Full-Stack Development",
+      desc: "Architecting clean, resilient web applications from reactive frontends to scalable backend services.",
+      icon: "code"
+    },
+    {
+      title: "AI & Machine Learning",
+      desc: "Integrating intelligent models, LLM workflows, and data pipelines to solve real problems.",
+      icon: "cpu"
+    },
+    {
+      title: "Design Engineering",
+      desc: "Obsessing over physics-based motion, tactile feedback, typography hierarchy, and accessibility.",
+      icon: "layers"
+    }
+  ],
   projects: [
     {
       id: "project-qr",
       title: "Dynamic QR",
-      description: "A dynamic QR code generator and manager. Create QR codes that can be updated without reprinting — perfect for menus, campaigns, and more.",
-      techStack: ["JavaScript", "Node.js", "Express"],
+      description: "A high-performance dynamic QR code manager with real-time analytics and instant destination redirection without reprinting.",
+      techStack: ["JavaScript", "Node.js", "Express", "Analytics"],
       liveUrl: "https://qr.sreeharim.site/",
       githubUrl: "",
       featured: true,
@@ -73,8 +103,8 @@ const DEFAULT_PORTFOLIO_DATA = {
     {
       id: "project-trackmygov",
       title: "TrackMyGov",
-      description: "A civic transparency platform to track government projects, schemes, and spending — empowering citizens to stay informed and hold authorities accountable.",
-      techStack: ["JavaScript", "Node.js", "MongoDB"],
+      description: "A civic transparency and governance tracking platform allowing citizens to monitor public projects, schemes, and budget allocations.",
+      techStack: ["JavaScript", "Node.js", "MongoDB", "Express"],
       liveUrl: "https://trackmygov.sreeharim.site/",
       githubUrl: "",
       featured: true,
@@ -83,10 +113,10 @@ const DEFAULT_PORTFOLIO_DATA = {
   ],
   contact: {
     overline: "03. What's Next?",
-    heading: "Get In Touch",
-    description: "I'm currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+    heading: "Let's Build Something Together",
+    description: "Whether you have an exciting project, a role opening, or just want to discuss software and design engineering — my inbox is always open.",
     formEmail: "isreeharim@gmail.com",
-    btnText: "Say Hello"
+    btnText: "Send Message"
   },
   socials: {
     email: "isreeharim@gmail.com",
@@ -113,7 +143,7 @@ function getPortfolioData() {
 }
 
 /**
- * Deep merge to ensure backward compatibility if schema expands
+ * Deep merge to ensure backward compatibility
  */
 function deepMerge(target, source) {
   const output = Object.assign({}, target);
@@ -149,7 +179,7 @@ function savePortfolioData(data) {
 }
 
 /**
- * Reset data back to repository defaults
+ * Reset data back to defaults
  */
 function resetPortfolioData() {
   localStorage.removeItem(STORAGE_KEY);
