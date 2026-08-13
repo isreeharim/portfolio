@@ -124,7 +124,7 @@ function renderPortfolio() {
 
         const nameEl = document.getElementById('hero-name');
         if (nameEl) nameEl.innerHTML = `
-            <span class="name-text">${escapeHtml(data.hero.name || 'Sreehari M')}</span><span class="hero-period">.</span>
+            <span class="name-text">${escapeHtml(data.hero.name || 'Sreehari M')}</span>
             <svg class="hand-drawn-underline" viewBox="0 0 300 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 14C50 6 150 4 296 12C210 18 100 16 20 18" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
             </svg>
