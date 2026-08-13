@@ -868,8 +868,43 @@ footer {
   font-size: 0.8rem;
 }
 
-.footer-text { color: var(--text-muted); }
+.footer-text { color: var(--text-muted); margin-bottom: 8px; }
 .footer-text .accent { color: var(--accent); }
+
+.footer-admin-link {
+  margin-top: 10px;
+}
+
+.admin-quick-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(100, 255, 218, 0.05);
+  border: 1px solid rgba(100, 255, 218, 0.15);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  transition: all 0.25s var(--ease);
+}
+
+.admin-quick-badge:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.15);
+}
+
+.admin-nav-link {
+  color: var(--accent) !important;
+  opacity: 0.85;
+}
+
+.admin-nav-link:hover {
+  opacity: 1;
+}
+
 
 /* ===========================
    HAMBURGER & MOBILE NAV

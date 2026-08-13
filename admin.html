@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Studio | Sreehari Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+</head>
+<body class="admin-body">
+
+    <!-- ── AUTH LOGIN GATE ──────────────────────────────────────── -->
+    <div id="auth-gate" class="auth-overlay">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h2>Studio Access Gate</h2>
+                <p>Enter your secret PIN to access the portfolio CRUD studio.</p>
+            </div>
+
+            <form id="auth-form" class="auth-form">
+                <div class="pin-input-group">
+                    <input type="password" id="auth-pin" placeholder="Enter PIN (Default: admin123)" required autocomplete="current-password" autofocus>
+                    <button type="button" id="toggle-pin-visibility" class="pin-eye-btn" aria-label="Toggle PIN Visibility">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
+                <div id="auth-error" class="auth-error-msg"></div>
+
+                <button type="submit" class="admin-btn admin-btn-primary full-width">
+                    <span>Unlock Studio</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p><a href="index.html" class="back-link">← Back to Portfolio</a></p>
+                <span class="auth-hint">Default PIN: <code>admin123</code></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ADMIN APP SHELL ──────────────────────────────────────── -->
+    <div id="admin-app" class="admin-container hidden">
+
+        <!-- Top Header -->
+        <header class="admin-header">
+            <div class="admin-brand">
+                <a href="index.html" class="admin-logo">
+                    <span class="brand-accent">Sreehari</span><span class="brand-dot">.</span>M
+                </a>
+                <div class="studio-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Admin Studio</span>
+                </div>
+            </div>
+
+            <div class="admin-actions">
+                <a href="index.html" target="_blank" class="admin-btn admin-btn-ghost" title="Open live portfolio in a new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>View Live Site</span>
+                </a>
+                <button id="btn-quick-export" class="admin-btn admin-btn-secondary" title="Export Backup JSON">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Backup</span>
+                </button>
+                <button id="btn-lock" class="admin-btn admin-btn-danger" title="Lock and logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Lock</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="admin-layout">
+
+            <!-- Sidebar Navigation -->
+            <aside class="admin-sidebar">
+                <nav class="admin-nav">
+                    <button class="nav-item active" data-tab="tab-hero">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span>Hero Section</span>
+                    </button>
+                    <button class="nav-item" data-tab="tab-about">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>About & Bio</span>
+                    </button>
+                    <button class="nav-item" data-tab="tab-skills">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <span>Skills & Tech</span>
+                    </button>
+                    <button class="nav-item" data-tab="tab-projects">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                        <span>Projects (CRUD)</span>
+                    </button>
+                    <button class="nav-item" data-tab="tab-socials">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>Contact & Socials</span>
+                    </button>
+                    <button class="nav-item" data-tab="tab-settings">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <span>Backup & Settings</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Tab Panels -->
+            <main class="admin-content">
+
+                <!-- ════ TAB 1: HERO ════ -->
+                <section id="tab-hero" class="admin-panel active">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Hero Section</h2>
+                            <p>Customize the landing headline, dynamic typewriter phrases, and call-to-actions.</p>
+                        </div>
+                        <button class="admin-btn admin-btn-primary" onclick="saveHeroSection()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            <span>Save Hero</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="hero-input-greeting">Greeting Text</label>
+                                <input type="text" id="hero-input-greeting" placeholder="Hi, my name is">
+                            </div>
+                            <div class="admin-field">
+                                <label for="hero-input-name">Display Name</label>
+                                <input type="text" id="hero-input-name" placeholder="Sreehari">
+                            </div>
+                        </div>
+
+                        <!-- Typewriter Phrases -->
+                        <div class="admin-field">
+                            <label>Dynamic Typewriter Phrases ("I [phrase]...")</label>
+                            <div class="phrase-input-container">
+                                <input type="text" id="new-phrase-input" placeholder="e.g. build intelligent web apps.">
+                                <button type="button" class="admin-btn admin-btn-secondary" onclick="addHeroPhrase()">+ Add Phrase</button>
+                            </div>
+                            <div id="hero-phrases-list" class="tag-chips-container">
+                                <!-- Chips dynamically inserted -->
+                            </div>
+                            <small class="field-hint">These phrases cycle continuously in the hero typing animation.</small>
+                        </div>
+
+                        <div class="admin-field">
+                            <label for="hero-input-summary">Bio Summary</label>
+                            <textarea id="hero-input-summary" rows="3" placeholder="Short introduction paragraph..."></textarea>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="hero-btn1-text">Primary CTA Label</label>
+                                <input type="text" id="hero-btn1-text" placeholder="Check out my work">
+                            </div>
+                            <div class="admin-field">
+                                <label for="hero-btn1-link">Primary CTA Link</label>
+                                <input type="text" id="hero-btn1-link" placeholder="#projects">
+                            </div>
+                            <div class="admin-field">
+                                <label for="hero-btn2-text">Secondary CTA Label</label>
+                                <input type="text" id="hero-btn2-text" placeholder="Get in touch">
+                            </div>
+                            <div class="admin-field">
+                                <label for="hero-btn2-link">Secondary CTA Link</label>
+                                <input type="text" id="hero-btn2-link" placeholder="#contact">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════ TAB 2: ABOUT ════ -->
+                <section id="tab-about" class="admin-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>About & Bio</h2>
+                            <p>Manage your story, bio paragraphs, and interactive developer code card.</p>
+                        </div>
+                        <button class="admin-btn admin-btn-primary" onclick="saveAboutSection()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            <span>Save About</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="admin-field">
+                            <label for="about-input-title">Section Heading Title</label>
+                            <input type="text" id="about-input-title" placeholder="About Me">
+                        </div>
+
+                        <!-- Paragraphs -->
+                        <div class="admin-field">
+                            <div class="field-title-row">
+                                <label>Bio Paragraphs</label>
+                                <button type="button" class="btn-text-action" onclick="addAboutParagraph()">+ Add Paragraph</button>
+                            </div>
+                            <div id="about-paragraphs-list" class="paragraphs-list">
+                                <!-- Dynamic paragraph textareas -->
+                            </div>
+                        </div>
+
+                        <!-- Code Card Details -->
+                        <h3 class="subsection-title">Developer Code Card Preview Box</h3>
+                        <div class="form-grid-3">
+                            <div class="admin-field">
+                                <label for="code-name">Developer Name</label>
+                                <input type="text" id="code-name" placeholder="Sreehari">
+                            </div>
+                            <div class="admin-field">
+                                <label for="code-role">Role</label>
+                                <input type="text" id="code-role" placeholder="Full Stack">
+                            </div>
+                            <div class="admin-field">
+                                <label for="code-passion">Passion</label>
+                                <input type="text" id="code-passion" placeholder="Coding">
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="admin-checkbox-field">
+                                <label class="custom-switch">
+                                    <input type="checkbox" id="code-coffee">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Loves Coffee (<code>coffee: true</code>)</span>
+                            </div>
+                            <div class="admin-checkbox-field">
+                                <label class="custom-switch">
+                                    <input type="checkbox" id="code-open">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Open for Opportunities (<code>open: true</code>)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════ TAB 3: SKILLS ════ -->
+                <section id="tab-skills" class="admin-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Skills & Tech Stack</h2>
+                            <p>Add, remove, and curate the list of technologies shown in the About section.</p>
+                        </div>
+                        <button class="admin-btn admin-btn-primary" onclick="saveSkillsSection()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            <span>Save Skills</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-card">
+                        <div class="admin-field">
+                            <label>Add Skill Tag</label>
+                            <div class="phrase-input-container">
+                                <input type="text" id="new-skill-input" placeholder="e.g. Next.js, Docker, PyTorch...">
+                                <button type="button" class="admin-btn admin-btn-secondary" onclick="addSkillTag()">+ Add Skill</button>
+                            </div>
+                        </div>
+
+                        <div class="admin-field">
+                            <label>Current Skills List (Click ✕ to remove)</label>
+                            <div id="skills-tags-container" class="tag-chips-container large-chips">
+                                <!-- Chips dynamically inserted -->
+                            </div>
+                        </div>
+
+                        <!-- Quick Suggestions -->
+                        <div class="quick-suggestions-box">
+                            <label>Quick Suggestions (Click to add):</label>
+                            <div class="suggestion-chips">
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('TypeScript')">+ TypeScript</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('Next.js')">+ Next.js</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('PostgreSQL')">+ PostgreSQL</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('Tailwind CSS')">+ Tailwind CSS</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('Docker')">+ Docker</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('Git & GitHub')">+ Git & GitHub</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('GraphQL')">+ GraphQL</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('FastAPI')">+ FastAPI</button>
+                                <button type="button" class="chip-suggestion" onclick="quickAddSkill('Supabase')">+ Supabase</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════ TAB 4: PROJECTS (CRUD) ════ -->
+                <section id="tab-projects" class="admin-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Projects Management</h2>
+                            <p>Full CRUD for your portfolio projects with live reordering and visibility toggles.</p>
+                        </div>
+                        <div class="header-btn-group">
+                            <button class="admin-btn admin-btn-primary" onclick="openAddProjectModal()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <span>Add New Project</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-card no-padding">
+                        <div class="projects-table-toolbar">
+                            <div class="search-input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" id="project-search-input" placeholder="Search projects by title or tech..." oninput="filterProjectsList()">
+                            </div>
+                            <span id="projects-count-badge" class="badge-count">0 Projects</span>
+                        </div>
+
+                        <div id="admin-projects-list" class="admin-projects-grid">
+                            <!-- Dynamic Project Cards -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════ TAB 5: SOCIALS & CONTACT ════ -->
+                <section id="tab-socials" class="admin-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Contact, Socials & Meta</h2>
+                            <p>Configure contact form targets, external profile links, and site SEO meta.</p>
+                        </div>
+                        <button class="admin-btn admin-btn-primary" onclick="saveSocialsAndMetaSection()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            <span>Save Contact & Socials</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-card">
+                        <h3 class="subsection-title">Social Links & Fixed Sidebars</h3>
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="social-email">Primary Email Address</label>
+                                <input type="email" id="social-email" placeholder="isreeharim@gmail.com">
+                            </div>
+                            <div class="admin-field">
+                                <label for="social-github-url">GitHub Profile URL</label>
+                                <input type="url" id="social-github-url" placeholder="https://github.com/isreeharim">
+                            </div>
+                            <div class="admin-field">
+                                <label for="social-linkedin-url">LinkedIn Profile URL</label>
+                                <input type="url" id="social-linkedin-url" placeholder="https://www.linkedin.com/in/isreeharim/">
+                            </div>
+                            <div class="admin-field">
+                                <label for="social-twitter-url">Twitter / X URL</label>
+                                <input type="url" id="social-twitter-url" placeholder="https://x.com/iamsreehari_">
+                            </div>
+                            <div class="admin-field">
+                                <label for="social-instagram-url">Instagram URL</label>
+                                <input type="url" id="social-instagram-url" placeholder="https://www.instagram.com/iamsreehari_/">
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">Contact Section Details</h3>
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="contact-input-overline">Overline</label>
+                                <input type="text" id="contact-input-overline" placeholder="03. What's Next?">
+                            </div>
+                            <div class="admin-field">
+                                <label for="contact-input-heading">Heading</label>
+                                <input type="text" id="contact-input-heading" placeholder="Get In Touch">
+                            </div>
+                        </div>
+                        <div class="admin-field">
+                            <label for="contact-input-desc">Contact Pitch / Subtitle</label>
+                            <textarea id="contact-input-desc" rows="2" placeholder="I'm currently looking for new opportunities..."></textarea>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="contact-form-email">FormSubmit Recipient Email</label>
+                                <input type="email" id="contact-form-email" placeholder="isreeharim@gmail.com">
+                                <small class="field-hint">Messages sent via contact form are delivered here.</small>
+                            </div>
+                            <div class="admin-field">
+                                <label for="contact-btn-text">Submit Button Text</label>
+                                <input type="text" id="contact-btn-text" placeholder="Say Hello">
+                            </div>
+                        </div>
+
+                        <h3 class="subsection-title">Site Meta & Branding</h3>
+                        <div class="form-grid-2">
+                            <div class="admin-field">
+                                <label for="meta-site-title">Browser Tab Title</label>
+                                <input type="text" id="meta-site-title" placeholder="Sreehari M | Developer Portfolio">
+                            </div>
+                            <div class="admin-field">
+                                <label for="meta-footer-text">Footer Text</label>
+                                <input type="text" id="meta-footer-text" placeholder="Designed & Built by Sreehari M">
+                            </div>
+                        </div>
+                        <div class="admin-field">
+                            <label for="meta-desc-input">Meta Description (SEO)</label>
+                            <textarea id="meta-desc-input" rows="2" placeholder="Full-stack developer specializing in web development..."></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════ TAB 6: BACKUP & SETTINGS ════ -->
+                <section id="tab-settings" class="admin-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Backup, Restore & Security</h2>
+                            <p>Export your full site data to JSON, import backups, or change your secret PIN.</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+                        <!-- Export Card -->
+                        <div class="panel-card">
+                            <div class="card-icon-title">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                </div>
+                                <div>
+                                    <h3>Export Backup JSON</h3>
+                                    <p>Download your complete portfolio dataset to keep a safe backup.</p>
+                                </div>
+                            </div>
+                            <button class="admin-btn admin-btn-secondary full-width" onclick="exportPortfolioData()">
+                                <span>Download portfolio-data.json</span>
+                            </button>
+                        </div>
+
+                        <!-- Import Card -->
+                        <div class="panel-card">
+                            <div class="card-icon-title">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                </div>
+                                <div>
+                                    <h3>Import Backup JSON</h3>
+                                    <p>Restore your portfolio from a previously exported JSON backup file.</p>
+                                </div>
+                            </div>
+                            <input type="file" id="json-file-input" accept=".json" style="display:none" onchange="handleFileImport(event)">
+                            <button class="admin-btn admin-btn-secondary full-width" onclick="document.getElementById('json-file-input').click()">
+                                <span>Select JSON File to Restore</span>
+                            </button>
+                        </div>
+
+                        <!-- Security Card -->
+                        <div class="panel-card">
+                            <div class="card-icon-title">
+                                <div class="icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                </div>
+                                <div>
+                                    <h3>Change Studio PIN</h3>
+                                    <p>Update the passcode required to access this admin panel.</p>
+                                </div>
+                            </div>
+                            <form id="change-pin-form" onsubmit="handleChangePin(event)">
+                                <div class="admin-field">
+                                    <label for="current-pin-input">Current PIN</label>
+                                    <input type="password" id="current-pin-input" required placeholder="Enter current PIN">
+                                </div>
+                                <div class="admin-field">
+                                    <label for="new-pin-input">New PIN (min 4 characters)</label>
+                                    <input type="password" id="new-pin-input" required placeholder="Enter new PIN">
+                                </div>
+                                <button type="submit" class="admin-btn admin-btn-primary full-width">
+                                    <span>Update PIN</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Reset Card -->
+                        <div class="panel-card danger-card">
+                            <div class="card-icon-title">
+                                <div class="icon-circle danger-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </div>
+                                <div>
+                                    <h3>Reset to Repository Defaults</h3>
+                                    <p>Discard all custom edits and restore original portfolio code state.</p>
+                                </div>
+                            </div>
+                            <button class="admin-btn admin-btn-danger full-width" onclick="handleResetDefaults()">
+                                <span>Reset All Data</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ── PROJECT ADD/EDIT MODAL ──────────────────────────────── -->
+    <div id="project-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-project-title">Add New Project</h3>
+                <button type="button" class="modal-close-btn" onclick="closeProjectModal()">✕</button>
+            </div>
+
+            <form id="project-form" onsubmit="handleSaveProject(event)">
+                <input type="hidden" id="modal-project-id">
+
+                <div class="admin-field">
+                    <label for="modal-input-title">Project Title *</label>
+                    <input type="text" id="modal-input-title" required placeholder="e.g. Dynamic QR">
+                </div>
+
+                <div class="admin-field">
+                    <label for="modal-input-desc">Description *</label>
+                    <textarea id="modal-input-desc" rows="3" required placeholder="What does this project do?"></textarea>
+                </div>
+
+                <div class="admin-field">
+                    <label for="modal-input-tech">Tech Stack (comma separated) *</label>
+                    <input type="text" id="modal-input-tech" required placeholder="e.g. React, Node.js, Express, MongoDB">
+                    <small class="field-hint">Separate each technology with a comma.</small>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="admin-field">
+                        <label for="modal-input-live">Live Demo URL</label>
+                        <input type="url" id="modal-input-live" placeholder="https://myproject.sreeharim.site/">
+                    </div>
+                    <div class="admin-field">
+                        <label for="modal-input-github">GitHub Repository URL</label>
+                        <input type="url" id="modal-input-github" placeholder="https://github.com/isreeharim/repo">
+                    </div>
+                </div>
+
+                <div class="modal-switches">
+                    <div class="admin-checkbox-field">
+                        <label class="custom-switch">
+                            <input type="checkbox" id="modal-input-visible" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span>Visible on Landing Page</span>
+                    </div>
+                    <div class="admin-checkbox-field">
+                        <label class="custom-switch">
+                            <input type="checkbox" id="modal-input-featured" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span>Featured Project</span>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="admin-btn admin-btn-ghost" onclick="closeProjectModal()">Cancel</button>
+                    <button type="submit" class="admin-btn admin-btn-primary">
+                        <span>Save Project</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ── TOAST NOTIFICATIONS ─────────────────────────────────── -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
