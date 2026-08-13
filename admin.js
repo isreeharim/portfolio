@@ -358,7 +358,43 @@ function reorderMetric(index, direction) {
   renderHeroMetricsAdminList();
 }
 
-function saveHeroSection() {
+function flashButtonSuccess(eventOrButton, successText = 'Saved! ✍️') {
+  let btn = null;
+  if (eventOrButton && eventOrButton.currentTarget) {
+    btn = eventOrButton.currentTarget;
+  } else if (eventOrButton && eventOrButton instanceof HTMLElement) {
+    btn = eventOrButton;
+  }
+  if (!btn) return;
+
+  const span = btn.querySelector('span');
+  const originalText = span ? span.innerHTML : btn.innerHTML;
+  const originalBg = btn.style.backgroundColor;
+  const originalBorder = btn.style.borderColor;
+  const originalColor = btn.style.color;
+
+  if (span) {
+    span.innerHTML = `✓ ${successText}`;
+  } else {
+    btn.innerHTML = `<span>✓ ${successText}</span>`;
+  }
+  btn.style.backgroundColor = '#15803d';
+  btn.style.borderColor = '#15803d';
+  btn.style.color = '#ffffff';
+
+  setTimeout(() => {
+    if (span) {
+      span.innerHTML = originalText;
+    } else {
+      btn.innerHTML = originalText;
+    }
+    btn.style.backgroundColor = originalBg;
+    btn.style.borderColor = originalBorder;
+    btn.style.color = originalColor;
+  }, 2200);
+}
+
+function saveHeroSection(e) {
   const data = getPortfolioData();
   data.hero = {
     ...data.hero,
@@ -378,7 +414,8 @@ function saveHeroSection() {
 
   const res = savePortfolioData(data);
   if (res.success) {
-    showToast('Hero section & metric pills saved successfully!');
+    flashButtonSuccess(e, 'Saved to Notebook!');
+    showToast('✓ Hero section & metric pills saved successfully!');
   } else {
     showToast('Error saving hero section.', 'error');
   }
@@ -421,7 +458,7 @@ function removeParagraph(index) {
   renderAboutParagraphs();
 }
 
-function saveAboutSection() {
+function saveAboutSection(e) {
   const data = getPortfolioData();
   data.about = {
     ...data.about,
@@ -438,7 +475,8 @@ function saveAboutSection() {
 
   const res = savePortfolioData(data);
   if (res.success) {
-    showToast('About section saved successfully!');
+    flashButtonSuccess(e, 'Saved to Notebook!');
+    showToast('✓ About section saved successfully!');
   } else {
     showToast('Error saving about section.', 'error');
   }
@@ -491,7 +529,7 @@ function quickAddSkill(skill) {
   }
 }
 
-function saveSkillsSection() {
+function saveSkillsSection(e) {
   const data = getPortfolioData();
   data.about = {
     ...data.about,
@@ -500,7 +538,8 @@ function saveSkillsSection() {
 
   const res = savePortfolioData(data);
   if (res.success) {
-    showToast('Skills updated successfully!');
+    flashButtonSuccess(e, 'Saved to Notebook!');
+    showToast('✓ Skills updated successfully!');
   } else {
     showToast('Error saving skills.', 'error');
   }
@@ -701,7 +740,7 @@ function moveProject(index, direction) {
 }
 
 // ── 5. SOCIALS & CONTACT & META HANDLERS ──────────────────────
-function saveSocialsAndMetaSection() {
+function saveSocialsAndMetaSection(e) {
   const data = getPortfolioData();
 
   data.socials = {
@@ -732,7 +771,8 @@ function saveSocialsAndMetaSection() {
 
   const res = savePortfolioData(data);
   if (res.success) {
-    showToast('Contact, Socials & Meta settings saved!');
+    flashButtonSuccess(e, 'Saved to Notebook!');
+    showToast('✓ Contact, Socials & Meta settings saved!');
   } else {
     showToast('Error saving settings.', 'error');
   }

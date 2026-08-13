@@ -111,10 +111,13 @@ function renderPortfolio() {
     if (data.hero) {
         const statusNote = document.getElementById('hero-status-note');
         if (statusNote) {
-            if (data.hero.showBadge === false) {
+            const isBadgeVisible = data.hero.showBadge !== false;
+            if (!isBadgeVisible) {
                 statusNote.classList.add('hidden');
+                statusNote.style.display = 'none';
             } else {
                 statusNote.classList.remove('hidden');
+                statusNote.style.display = 'inline-flex';
             }
         }
 

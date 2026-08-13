@@ -177,6 +177,12 @@ ul { list-style: none; }
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.hidden,
+#hero-status-note.hidden,
+.sticky-status-note.hidden {
+  display: none !important;
+}
+
 .page-loader.hidden {
   opacity: 0;
   visibility: hidden;
