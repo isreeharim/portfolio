@@ -11,8 +11,8 @@ const DEFAULT_PORTFOLIO_DATA = {
   meta: {
     siteTitle: "Sreehari M | Software Developer & Builder",
     metaDescription: "Sreehari M — Software Developer & Engineer specializing in full-stack web development, AI/ML, and crafting human-centered digital experiences.",
-    brandName: "Sreehari",
-    brandDot: "M",
+    brandName: "Sreehari M",
+    brandDot: "",
     loaderText: "S",
     statusBadge: "Available for new opportunities",
     footerText: "Designed & Engineered by Sreehari M",

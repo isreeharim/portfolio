@@ -187,13 +187,13 @@ button { font-family: inherit; }
 /* ── 4. FLOATING NOTEBOOK TABS NAVBAR ────────────────────────── */
 .navbar-wrapper {
   position: fixed;
-  top: 18px;
+  top: 16px;
   left: 0;
   right: 0;
   z-index: 1000;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 24px;
   transition: transform 0.3s var(--ease-out);
 }
 
@@ -202,19 +202,20 @@ button { font-family: inherit; }
 }
 
 .navbar-capsule {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-ink);
-  border-radius: 12px;
-  padding: 8px 14px 8px 20px;
+  background: rgba(255, 254, 248, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--border-ink);
+  border-radius: 999px;
+  padding: 7px 12px 7px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
-  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
-  max-width: 960px;
+  gap: 32px;
+  box-shadow: 0 10px 30px -6px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+  max-width: 980px;
   width: 100%;
+  transition: all 0.2s var(--ease-out);
 }
 
 .nav-logo {
@@ -222,83 +223,102 @@ button { font-family: inherit; }
   align-items: center;
   gap: 8px;
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--ink-primary);
   text-decoration: none;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.pen-icon { font-size: 1.1rem; }
-.logo-dot { color: var(--ink-red); }
-.logo-sub { color: var(--ink-blue); }
+.pen-icon {
+  font-size: 1.15rem;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo:hover .pen-icon {
+  transform: rotate(-12deg) scale(1.1);
+}
+
+.nav-logo:hover .logo-text {
+  color: var(--ink-blue);
+}
 
 .online-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--ink-green);
-  box-shadow: 0 0 6px rgba(21, 128, 61, 0.4);
+  box-shadow: 0 0 6px rgba(21, 128, 61, 0.6);
+  margin-left: 2px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 500;
   color: var(--ink-secondary);
-  padding: 7px 12px;
-  border-radius: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
   transition: all 0.18s var(--ease-out);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  white-space: nowrap;
 }
 
 .nav-link .tab-doodle, .nav-link .tab-num {
   color: var(--ink-red);
-  font-size: 0.75rem;
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .nav-link:hover {
   color: var(--ink-blue);
   background: var(--highlighter-yellow);
+  transform: translateY(-1px);
 }
 
 .nav-link.active {
   color: var(--ink-blue);
   background: var(--highlighter-yellow);
-  font-weight: 600;
-  border-bottom: 2px solid var(--ink-blue);
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .nav-cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--bg-paper);
-  color: var(--ink-blue);
-  border: 1px dashed var(--ink-blue);
-  padding: 7px 14px;
-  border-radius: 8px;
+  background: var(--ink-blue);
+  color: #ffffff !important;
+  border: 1.5px solid var(--ink-blue);
+  padding: 7px 16px;
+  border-radius: 999px;
   font-family: var(--font-hand);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 var(--ink-primary);
   transition: all 0.18s var(--ease-out);
+  white-space: nowrap;
 }
 
 .nav-cta-btn:hover {
-  background: var(--ink-blue);
-  color: #ffffff;
-  transform: translateY(-1px) rotate(-1deg);
+  background: var(--ink-blue-hover);
+  transform: translate(-1px, -1px) rotate(-1deg);
+  box-shadow: 3px 3px 0 var(--ink-primary);
 }
 
 .nav-cta-btn:active {
-  transform: scale(0.96);
-  transition-duration: 80ms;
+  transform: translate(1px, 1px);
+  box-shadow: 0px 0px 0 var(--ink-primary);
+  transition-duration: 60ms;
 }
 
 /* ── 5. FIXED SIDEBARS (DESKTOP) ─────────────────────────────── */
@@ -480,22 +500,35 @@ main#main-content {
 /* Hero Intro & Underline */
 .hero-intro {
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .hand-annotation {
   font-family: var(--font-hand);
-  font-size: 1.4rem;
+  font-size: 1.55rem;
+  font-weight: 700;
   color: var(--ink-blue);
-  transform: rotate(-4deg);
-  margin-bottom: -6px;
+  transform: rotate(-3deg);
+  display: inline-block;
+  padding: 3px 12px;
+  background: rgba(186, 230, 253, 0.5);
+  border: 1.5px dashed rgba(29, 78, 216, 0.3);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.04);
 }
 
 .hero-greeting {
   font-family: var(--font-mono);
   color: var(--ink-muted);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  font-weight: 500;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 0;
 }
 
 .hero-name {

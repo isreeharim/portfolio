@@ -80,9 +80,11 @@ function renderPortfolio() {
 
         const brandLogo = document.getElementById('nav-logo');
         if (brandLogo) {
+            const rawName = data.meta.brandName || 'Sreehari M';
+            const fullName = rawName.includes('M') ? rawName : `${rawName} ${data.meta.brandDot || ''}`.trim();
             brandLogo.innerHTML = `
                 <span class="pen-icon">✒️</span>
-                <span class="logo-text">${escapeHtml(data.meta.brandName || 'Sreehari')}</span><span class="logo-dot">.</span><span class="logo-sub">${escapeHtml(data.meta.brandDot || 'M')}</span>
+                <span class="logo-text">${escapeHtml(fullName)}</span>
                 <span class="online-indicator" title="Available for opportunities"></span>
             `;
         }
