@@ -505,7 +505,7 @@ main#main-content {
   pointer-events: none;
 }
 
-/* Dynamic Typewriter with Highlighter */
+/* Dynamic Typewriter with Highlighter & Rubber Eraser */
 .hero-typewriter-wrapper {
   font-size: clamp(1.3rem, 3.5vw, 2.2rem);
   font-weight: 700;
@@ -517,6 +517,7 @@ main#main-content {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .typewriter-prefix {
@@ -531,18 +532,55 @@ main#main-content {
   padding: 0 6px;
   border-radius: 4px;
   color: var(--ink-primary);
+  transition: filter 0.1s ease, opacity 0.1s ease;
+}
+
+/* Rubber Eraser Effect */
+.hero-typewriter-wrapper.is-erasing .typewriter-content.highlighter-highlight {
+  filter: blur(0.7px);
+  opacity: 0.8;
+  background: rgba(254, 240, 138, 0.5);
+  animation: eraserFriction 0.09s infinite linear alternate;
 }
 
 .typewriter-cursor {
   color: var(--ink-red);
   font-family: var(--font-mono);
-  font-weight: 300;
+  font-weight: 400;
   margin-left: 2px;
   animation: blinkCursor 0.85s infinite steps(2, start);
+  display: inline-block;
+}
+
+.hero-typewriter-wrapper.is-erasing .typewriter-cursor {
+  color: #f43f5e;
+  animation: eraserRub 0.14s infinite ease-in-out !important;
+  transform-origin: bottom center;
+}
+
+.hero-typewriter-wrapper.is-erasing .typewriter-cursor::after {
+  content: ' 🧼';
+  font-size: 0.65em;
+  vertical-align: 2px;
+}
+
+@keyframes eraserFriction {
+  0%   { transform: translate(-1.5px, 0.5px) rotate(-0.8deg); }
+  100% { transform: translate(1.5px, -0.5px) rotate(0.8deg); }
+}
+
+@keyframes eraserRub {
+  0%   { transform: rotate(-12deg) translateY(-2px); }
+  50%  { transform: rotate(12deg) translateY(0); }
+  100% { transform: rotate(-12deg) translateY(-2px); }
 }
 
 @keyframes blinkCursor {
   to { visibility: hidden; }
+}
+
+.sticky-status-note.hidden {
+  display: none !important;
 }
 
 /* Bio Summary */

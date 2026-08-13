@@ -17,6 +17,7 @@ const typedEl = document.getElementById('typed-text');
 
 function type() {
     if (!typedEl) return;
+    const typewriterWrapper = document.querySelector('.hero-typewriter-wrapper');
     if (!phrases || phrases.length === 0) {
         typedEl.textContent = 'build high-impact software.';
         return;
@@ -26,19 +27,22 @@ function type() {
     const current = phrases[phraseIndex];
 
     if (isDeleting) {
+        if (typewriterWrapper) typewriterWrapper.classList.add('is-erasing');
         typedEl.textContent = current.substring(0, --charIndex);
     } else {
+        if (typewriterWrapper) typewriterWrapper.classList.remove('is-erasing');
         typedEl.textContent = current.substring(0, ++charIndex);
     }
 
-    let delay = isDeleting ? 35 : 75;
+    let delay = isDeleting ? 28 : 75;
     if (!isDeleting && charIndex === current.length) {
         delay = 2200; // Pause on completed sentence
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
+        if (typewriterWrapper) typewriterWrapper.classList.remove('is-erasing');
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        delay = 400; // Brief pause before starting next sentence
+        delay = 450; // Pause after erasing before writing next sentence
     }
 
     clearTimeout(typingTimeout);
@@ -77,6 +81,7 @@ function renderPortfolio() {
         const brandLogo = document.getElementById('nav-logo');
         if (brandLogo) {
             brandLogo.innerHTML = `
+                <span class="pen-icon">✒️</span>
                 <span class="logo-text">${escapeHtml(data.meta.brandName || 'Sreehari')}</span><span class="logo-dot">.</span><span class="logo-sub">${escapeHtml(data.meta.brandDot || 'M')}</span>
                 <span class="online-indicator" title="Available for opportunities"></span>
             `;
@@ -91,10 +96,24 @@ function renderPortfolio() {
         if (footerText && data.meta.footerText) {
             footerText.innerHTML = `${escapeHtml(data.meta.footerText)}`;
         }
+
+        const footerSubEl = document.getElementById('footer-subtext');
+        if (footerSubEl && data.meta.footerSubtext) {
+            footerSubEl.textContent = data.meta.footerSubtext;
+        }
     }
 
     // B. Hero Section
     if (data.hero) {
+        const statusNote = document.getElementById('hero-status-note');
+        if (statusNote) {
+            if (data.hero.showBadge === false) {
+                statusNote.classList.add('hidden');
+            } else {
+                statusNote.classList.remove('hidden');
+            }
+        }
+
         const badgeEl = document.getElementById('hero-badge');
         if (badgeEl) badgeEl.textContent = data.hero.badge || data.meta?.statusBadge || 'Available for new opportunities';
 
@@ -102,7 +121,12 @@ function renderPortfolio() {
         if (greetingEl) greetingEl.textContent = data.hero.greeting || "Hello, I'm";
 
         const nameEl = document.getElementById('hero-name');
-        if (nameEl) nameEl.innerHTML = `${escapeHtml(data.hero.name || 'Sreehari M')}<span class="hero-period">.</span>`;
+        if (nameEl) nameEl.innerHTML = `
+            <span class="name-text">${escapeHtml(data.hero.name || 'Sreehari M')}</span><span class="hero-period">.</span>
+            <svg class="hand-drawn-underline" viewBox="0 0 300 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 14C50 6 150 4 296 12C210 18 100 16 20 18" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        `;
 
         const summaryEl = document.getElementById('hero-summary');
         if (summaryEl) summaryEl.textContent = data.hero.summary || '';

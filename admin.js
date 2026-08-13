@@ -94,6 +94,7 @@ function loadAllFormData() {
 
   // 1. Hero
   if (data.hero) {
+    setCheckbox('hero-input-badge-visible', data.hero.showBadge !== false);
     setValue('hero-input-badge', data.hero.badge || data.meta?.statusBadge || '');
     setValue('hero-input-greeting', data.hero.greeting || '');
     setValue('hero-input-name', data.hero.name || '');
@@ -147,6 +148,7 @@ function loadAllFormData() {
   if (data.meta) {
     setValue('meta-site-title', data.meta.siteTitle || '');
     setValue('meta-footer-text', data.meta.footerText || '');
+    setValue('meta-footer-subtext', data.meta.footerSubtext || '');
     setValue('meta-desc-input', data.meta.metaDescription || '');
   }
 }
@@ -199,6 +201,7 @@ function saveHeroSection() {
   const data = getPortfolioData();
   data.hero = {
     ...data.hero,
+    showBadge: document.getElementById('hero-input-badge-visible') ? document.getElementById('hero-input-badge-visible').checked : true,
     badge: document.getElementById('hero-input-badge').value.trim(),
     greeting: document.getElementById('hero-input-greeting').value.trim(),
     name: document.getElementById('hero-input-name').value.trim(),
@@ -560,6 +563,7 @@ function saveSocialsAndMetaSection() {
     ...data.meta,
     siteTitle: document.getElementById('meta-site-title').value.trim(),
     footerText: document.getElementById('meta-footer-text').value.trim(),
+    footerSubtext: document.getElementById('meta-footer-subtext') ? document.getElementById('meta-footer-subtext').value.trim() : '',
     metaDescription: document.getElementById('meta-desc-input').value.trim()
   };
 

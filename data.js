@@ -15,10 +15,12 @@ const DEFAULT_PORTFOLIO_DATA = {
     brandDot: "M",
     loaderText: "S",
     statusBadge: "Available for new opportunities",
-    footerText: "Designed & Engineered by Sreehari M"
+    footerText: "Designed & Engineered by Sreehari M",
+    footerSubtext: "Written in ink on digital parchment • Handcrafted with care."
   },
   hero: {
     badge: "Available for new opportunities",
+    showBadge: true,
     greeting: "Hello, I'm",
     name: "Sreehari M",
     phrases: [
@@ -67,9 +69,7 @@ const DEFAULT_PORTFOLIO_DATA = {
       "PostgreSQL",
       "Tailwind CSS",
       "REST APIs",
-      "Git & GitHub",
-      "Docker",
-      "FastAPI"
+      "Docker"
     ]
   },
   highlights: [
@@ -112,11 +112,11 @@ const DEFAULT_PORTFOLIO_DATA = {
     }
   ],
   contact: {
-    overline: "03. What's Next?",
+    overline: "04. What's Next?",
     heading: "Let's Build Something Together",
     description: "Whether you have an exciting project, a role opening, or just want to discuss software and design engineering — my inbox is always open.",
     formEmail: "isreeharim@gmail.com",
-    btnText: "Send Message"
+    btnText: "Send Letter 📬"
   },
   socials: {
     email: "isreeharim@gmail.com",

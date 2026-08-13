@@ -131,6 +131,14 @@
                     </div>
 
                     <div class="panel-card paper-sheet">
+                        <div class="admin-checkbox-field" style="margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-paper);">
+                            <label class="custom-switch">
+                                <input type="checkbox" id="hero-input-badge-visible" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span><strong>Show 📌 Status Sticky Note</strong> on Landing Page</span>
+                        </div>
+
                         <div class="admin-field">
                             <label for="hero-input-badge">Status Badge (Sticky Note Text)</label>
                             <input type="text" id="hero-input-badge" placeholder="Available for new opportunities">
@@ -392,9 +400,13 @@
                                 <input type="text" id="meta-site-title" placeholder="Sreehari M | Developer's Notebook">
                             </div>
                             <div class="admin-field">
-                                <label for="meta-footer-text">Footer Text</label>
+                                <label for="meta-footer-text">Footer Author Credit</label>
                                 <input type="text" id="meta-footer-text" placeholder="Designed & Engineered by Sreehari M">
                             </div>
+                        </div>
+                        <div class="admin-field">
+                            <label for="meta-footer-subtext">Footer Subtitle / Notebook Subtext</label>
+                            <input type="text" id="meta-footer-subtext" placeholder="Written in ink on digital parchment • Handcrafted with care.">
                         </div>
                         <div class="admin-field">
                             <label for="meta-desc-input">Meta Description (SEO)</label>
@@ -490,12 +502,12 @@
 
                 <div class="form-grid-2">
                     <div class="admin-field">
-                        <label for="modal-input-live">Live Demo URL</label>
-                        <input type="url" id="modal-input-live" placeholder="https://myproject.sreeharim.site/">
+                        <label for="modal-input-live">Live Demo URL <span style="font-family:var(--font-hand); color:var(--ink-muted); font-size:1.1rem;">(Optional)</span></label>
+                        <input type="url" id="modal-input-live" placeholder="https://myproject.sreeharim.site/ (Optional)">
                     </div>
                     <div class="admin-field">
-                        <label for="modal-input-github">GitHub Repository URL</label>
-                        <input type="url" id="modal-input-github" placeholder="https://github.com/isreeharim/repo">
+                        <label for="modal-input-github">GitHub Repository URL <span style="font-family:var(--font-hand); color:var(--ink-muted); font-size:1.1rem;">(Optional)</span></label>
+                        <input type="url" id="modal-input-github" placeholder="https://github.com/isreeharim/repo (Optional)">
                     </div>
                 </div>
 
