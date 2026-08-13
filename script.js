@@ -449,16 +449,27 @@ function updateActiveNav() {
 }
 
 // ── 9. SCROLL REVEAL OBSERVER ─────────────────────────────────
-const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+function initScrollReveal() {
+    const revealEls = document.querySelectorAll('.reveal-on-scroll');
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    entry.target.classList.add('is-revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+        revealEls.forEach(el => revealObserver.observe(el));
+    } else {
+        revealEls.forEach(el => {
+            el.classList.add('show');
+            el.classList.add('is-revealed');
+        });
+    }
+}
 
 // ── 10. CONTACT FORM HANDLER ──────────────────────────────────
 const form = document.getElementById('contact-form');
@@ -470,8 +481,8 @@ if (form) {
         const data = (typeof getPortfolioData === 'function') ? getPortfolioData() : {};
         const recipientEmail = (data.contact && data.contact.formEmail) ? data.contact.formEmail : 'isreeharim@gmail.com';
 
-        const btn = form.querySelector('.btn-submit-action');
-        const span = btn ? btn.querySelector('span') : null;
+        const btn = document.getElementById('submit-btn') || form.querySelector('button[type="submit"]');
+        const span = document.getElementById('submit-btn-text') || (btn ? btn.querySelector('span') : null);
         const originalText = span ? span.textContent : 'Send Message';
         if (span) span.textContent = 'Sending...';
         if (btn) btn.disabled = true;
@@ -485,12 +496,12 @@ if (form) {
         .then(res => {
             if (span) span.textContent = originalText;
             if (btn) btn.disabled = false;
-            if (res.success) {
-                statusDiv.style.color = 'var(--accent)';
+            if (res.success || res.ok) {
+                statusDiv.style.color = '#16a34a';
                 statusDiv.textContent = '✓ Message delivered successfully!';
                 form.reset();
             } else {
-                statusDiv.style.color = '#ff6b6b';
+                statusDiv.style.color = '#D12828';
                 statusDiv.textContent = '✗ Something went wrong. Please try again.';
             }
             setTimeout(() => statusDiv.textContent = '', 5000);
@@ -498,7 +509,7 @@ if (form) {
         .catch(() => {
             if (span) span.textContent = originalText;
             if (btn) btn.disabled = false;
-            statusDiv.style.color = '#ff6b6b';
+            statusDiv.style.color = '#D12828';
             statusDiv.textContent = '✗ Network error. Please try again.';
             setTimeout(() => statusDiv.textContent = '', 5000);
         });
@@ -539,15 +550,18 @@ window.addEventListener('keydown', e => {
 document.addEventListener('DOMContentLoaded', () => {
     renderPortfolio();
     initCopyCodeButton();
+    initScrollReveal();
     setTimeout(type, 1000);
 });
 
 window.addEventListener('portfolioDataUpdated', () => {
     renderPortfolio();
+    initScrollReveal();
 });
 
 window.addEventListener('storage', e => {
     if (e.key === STORAGE_KEY) {
         renderPortfolio();
+        initScrollReveal();
     }
 });

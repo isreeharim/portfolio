@@ -916,7 +916,7 @@ ul { list-style: none; }
   50% { transform: translateY(6px); }
 }
 
-/* ── 9. ABOUT SECTION (ZIGZAG COMPOSITION) ───────────────────── */
+/* ── 9. ABOUT SECTION (TORN NOTEPAD & GRAPH SHEET) ───────────── */
 .about-zigzag-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -926,11 +926,26 @@ ul { list-style: none; }
 
 .sketch-card {
   background: #FFFFFF;
-  border: 2px solid var(--color-border-sketch);
-  border-radius: 10px;
-  padding: 34px 28px;
+  border-left: 2.5px solid rgba(209, 40, 40, 0.4);
+  border-right: 1.5px solid var(--color-border-sketch);
+  border-top: 1.5px solid var(--color-border-sketch);
+  padding: 38px 28px 42px;
   position: relative;
-  box-shadow: var(--shadow-sketch);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 9px), 97% 100%, 93% calc(100% - 6px), 90% calc(100% - 1px),
+    87% calc(100% - 7px), 83% calc(100% - 2px), 80% 100%, 77% calc(100% - 6px), 73% calc(100% - 1px),
+    70% calc(100% - 7px), 67% calc(100% - 2px), 63% 100%, 60% calc(100% - 6px), 57% calc(100% - 1px),
+    53% calc(100% - 7px), 50% calc(100% - 2px), 47% 100%, 43% calc(100% - 6px), 40% calc(100% - 1px),
+    37% calc(100% - 7px), 33% calc(100% - 2px), 30% 100%, 27% calc(100% - 6px), 23% calc(100% - 1px),
+    20% calc(100% - 7px), 17% calc(100% - 2px), 13% 100%, 10% calc(100% - 6px), 7% calc(100% - 1px),
+    3% calc(100% - 7px), 0% 100%
+  );
+  filter: drop-shadow(0 10px 20px rgba(14, 42, 92, 0.08));
+  transition: transform 0.2s ease;
+}
+
+.sketch-card:hover {
+  transform: translateY(-3px);
 }
 
 .washi-tape-top {
@@ -942,13 +957,14 @@ ul { list-style: none; }
   background: rgba(255, 255, 165, 0.85);
   border: 1px dashed rgba(0, 0, 0, 0.2);
   transform: rotate(-2deg);
+  z-index: 10;
 }
 
 .about-paragraphs-flow {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.7;
 }
 
@@ -983,7 +999,7 @@ ul { list-style: none; }
 
 .skills-pills-cloud li {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   background: var(--color-primary);
   border: 1.5px solid var(--color-border-sketch);
   color: var(--color-secondary);
@@ -1000,17 +1016,27 @@ ul { list-style: none; }
   transform: translateY(-2px) rotate(1deg);
 }
 
-/* Engineering Graph Paper Card */
+/* Engineering Graph Paper Card with Torn Deckled Bottom */
 .graph-sheet-card {
   background-color: #fafbfc;
   background-image: 
     linear-gradient(rgba(14, 42, 92, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(14, 42, 92, 0.05) 1px, transparent 1px);
   background-size: 18px 18px;
-  border: 2px solid var(--color-border-sketch);
-  border-radius: 10px;
+  border: 1.5px solid var(--color-border-sketch);
+  border-top: 6px solid #e2e8f0;
   position: relative;
-  box-shadow: var(--shadow-sketch);
+  padding-bottom: 24px;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 9px), 97% 100%, 93% calc(100% - 6px), 90% calc(100% - 1px),
+    87% calc(100% - 7px), 83% calc(100% - 2px), 80% 100%, 77% calc(100% - 6px), 73% calc(100% - 1px),
+    70% calc(100% - 7px), 67% calc(100% - 2px), 63% 100%, 60% calc(100% - 6px), 57% calc(100% - 1px),
+    53% calc(100% - 7px), 50% calc(100% - 2px), 47% 100%, 43% calc(100% - 6px), 40% calc(100% - 1px),
+    37% calc(100% - 7px), 33% calc(100% - 2px), 30% 100%, 27% calc(100% - 6px), 23% calc(100% - 1px),
+    20% calc(100% - 7px), 17% calc(100% - 2px), 13% 100%, 10% calc(100% - 6px), 7% calc(100% - 1px),
+    3% calc(100% - 7px), 0% 100%
+  );
+  filter: drop-shadow(0 10px 20px rgba(14, 42, 92, 0.08));
   overflow: hidden;
 }
 
@@ -1023,6 +1049,7 @@ ul { list-style: none; }
   height: 18px;
   background: rgba(186, 230, 253, 0.8);
   border: 1px dashed rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .graph-topbar {
@@ -1106,40 +1133,47 @@ ul { list-style: none; }
 /* ── 10. HIGHLIGHTS (ASYMMETRIC GRID — NO 3 EQUAL COLS) ───────── */
 .highlights-asymmetric-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1.35fr 1fr 1fr;
   gap: 24px;
 }
 
 .highlight-sketch-card {
   background: #FFFFFF;
-  border: 2px solid var(--color-border-sketch);
-  border-radius: 10px;
-  padding: 30px 24px;
+  border: 1.5px solid var(--color-border-sketch);
+  padding: 32px 24px 38px;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  box-shadow: var(--shadow-sketch);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 9px), 97% 100%, 93% calc(100% - 6px), 90% calc(100% - 1px),
+    87% calc(100% - 7px), 83% calc(100% - 2px), 80% 100%, 77% calc(100% - 6px), 73% calc(100% - 1px),
+    70% calc(100% - 7px), 67% calc(100% - 2px), 63% 100%, 60% calc(100% - 6px), 57% calc(100% - 1px),
+    53% calc(100% - 7px), 50% calc(100% - 2px), 47% 100%, 43% calc(100% - 6px), 40% calc(100% - 1px),
+    37% calc(100% - 7px), 33% calc(100% - 2px), 30% 100%, 27% calc(100% - 6px), 23% calc(100% - 1px),
+    20% calc(100% - 7px), 17% calc(100% - 2px), 13% 100%, 10% calc(100% - 6px), 7% calc(100% - 1px),
+    3% calc(100% - 7px), 0% 100%
+  );
+  filter: drop-shadow(0 10px 20px rgba(14, 42, 92, 0.08));
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .highlight-sketch-card.featured-focus {
   background: #fffdf5;
-  border-color: var(--color-border-sketch);
 }
 
-.card-tilt-left   { transform: rotate(-1deg); }
-.card-tilt-center { transform: rotate(0.8deg); }
-.card-tilt-right  { transform: rotate(-0.6deg); }
+.card-tilt-left   { transform: rotate(-1.5deg); }
+.card-tilt-center { transform: rotate(1deg); }
+.card-tilt-right  { transform: rotate(-0.8deg); }
 
 .highlight-sketch-card:hover {
   transform: translateY(-4px) rotate(0deg);
-  box-shadow: var(--shadow-sketch-lift);
+  filter: drop-shadow(0 14px 28px rgba(14, 42, 92, 0.12));
 }
 
-.washi-tape-strip.tape-left   { top: -8px; left: 20px; background: rgba(255, 255, 165, 0.85); }
-.washi-tape-strip.tape-center { top: -8px; left: 40%; transform: translateX(-50%); background: rgba(186, 230, 253, 0.85); }
-.washi-tape-strip.tape-right  { top: -8px; right: 20px; background: rgba(187, 247, 208, 0.85); }
+.washi-tape-strip.tape-left   { top: -8px; left: 20px; background: rgba(255, 255, 165, 0.85); z-index: 5; }
+.washi-tape-strip.tape-center { top: -8px; left: 40%; transform: translateX(-50%); background: rgba(186, 230, 253, 0.85); z-index: 5; }
+.washi-tape-strip.tape-right  { top: -8px; right: 20px; background: rgba(187, 247, 208, 0.85); z-index: 5; }
 
 .highlight-icon-box {
   width: 44px;
@@ -1173,7 +1207,7 @@ ul { list-style: none; }
   margin-top: auto;
 }
 
-/* ── 11. PROJECTS GRID (ASYMMETRIC & SKETCH CARD TILES) ──────── */
+/* ── 11. PROJECTS GRID (TORN INDEX CARDS) ─────────────────────── */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -1182,16 +1216,24 @@ ul { list-style: none; }
 
 .project-card {
   background: #FFFFFF;
-  border: 2px solid var(--color-border-sketch);
-  border-radius: 10px;
-  padding: 30px 24px;
+  border: 1.5px solid var(--color-border-sketch);
+  padding: 34px 24px 38px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  box-shadow: var(--shadow-sketch);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 280px;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% calc(100% - 9px), 97% 100%, 93% calc(100% - 6px), 90% calc(100% - 1px),
+    87% calc(100% - 7px), 83% calc(100% - 2px), 80% 100%, 77% calc(100% - 6px), 73% calc(100% - 1px),
+    70% calc(100% - 7px), 67% calc(100% - 2px), 63% 100%, 60% calc(100% - 6px), 57% calc(100% - 1px),
+    53% calc(100% - 7px), 50% calc(100% - 2px), 47% 100%, 43% calc(100% - 6px), 40% calc(100% - 1px),
+    37% calc(100% - 7px), 33% calc(100% - 2px), 30% 100%, 27% calc(100% - 6px), 23% calc(100% - 1px),
+    20% calc(100% - 7px), 17% calc(100% - 2px), 13% 100%, 10% calc(100% - 6px), 7% calc(100% - 1px),
+    3% calc(100% - 7px), 0% 100%
+  );
+  filter: drop-shadow(0 10px 20px rgba(14, 42, 92, 0.08));
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .project-card::before {
@@ -1202,13 +1244,14 @@ ul { list-style: none; }
   transform: translateX(-50%) rotate(-1deg);
   width: 70px;
   height: 16px;
-  background: rgba(255, 255, 165, 0.8);
+  background: rgba(255, 255, 165, 0.85);
   border: 1px dashed rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
 .project-card:hover {
-  transform: translateY(-4px) rotate(0deg);
-  box-shadow: var(--shadow-sketch-lift);
+  transform: translateY(-4px) rotate(0.5deg);
+  filter: drop-shadow(0 16px 30px rgba(14, 42, 92, 0.12));
 }
 
 .project-card:active {
@@ -1287,7 +1330,7 @@ ul { list-style: none; }
   border-radius: 4px;
 }
 
-/* ── 12. CONTACT SECTION (AIRMAIL SKETCH MEMO) ───────────────── */
+/* ── 12. CONTACT SECTION (TORN AIRMAIL SKETCH MEMO) ──────────── */
 .contact-section {
   display: flex;
   justify-content: center;
@@ -1299,9 +1342,16 @@ ul { list-style: none; }
   max-width: 680px;
   background: #FFFFFF;
   border: 2px solid var(--color-border-sketch);
-  border-radius: 12px;
-  padding: 44px 36px;
-  box-shadow: 6px 6px 0 var(--color-border-sketch);
+  padding: 48px 36px 42px;
+  clip-path: polygon(
+    0% 10px, 2% 0px, 4% 8px, 6% 2px, 8% 10px, 10% 1px, 12% 9px, 14% 3px, 16% 10px, 18% 2px,
+    20% 8px, 22% 0px, 24% 10px, 26% 3px, 28% 9px, 30% 1px, 32% 10px, 34% 2px, 36% 8px, 38% 0px,
+    40% 10px, 42% 3px, 44% 9px, 46% 1px, 48% 10px, 50% 2px, 52% 8px, 54% 0px, 56% 10px, 58% 3px,
+    60% 9px, 62% 1px, 64% 10px, 66% 2px, 68% 8px, 70% 0px, 72% 10px, 74% 3px, 76% 9px, 78% 1px,
+    80% 10px, 82% 2px, 84% 8px, 86% 0px, 88% 10px, 90% 3px, 92% 9px, 94% 1px, 96% 10px, 98% 2px,
+    100% 8px, 100% 100%, 0% 100%
+  );
+  filter: drop-shadow(0 12px 28px rgba(14, 42, 92, 0.09));
 }
 
 .postcard-stamp-box {
@@ -1412,18 +1462,27 @@ ul { list-style: none; }
   margin-top: 8px;
 }
 
-/* ── 13. SITE FOOTER ─────────────────────────────────────────── */
+/* ── 13. SITE FOOTER (TORN PAPER SCRAP) ──────────────────────── */
 .site-footer {
   text-align: center;
   padding: 50px 20px 36px;
   position: relative;
   z-index: 10;
-  border-top: 1.5px dashed var(--color-border-muted);
+  background: #FFFFFF;
+  clip-path: polygon(
+    0% 10px, 2% 0px, 4% 8px, 6% 2px, 8% 10px, 10% 1px, 12% 9px, 14% 3px, 16% 10px, 18% 2px,
+    20% 8px, 22% 0px, 24% 10px, 26% 3px, 28% 9px, 30% 1px, 32% 10px, 34% 2px, 36% 8px, 38% 0px,
+    40% 10px, 42% 3px, 44% 9px, 46% 1px, 48% 10px, 50% 2px, 52% 8px, 54% 0px, 56% 10px, 58% 3px,
+    60% 9px, 62% 1px, 64% 10px, 66% 2px, 68% 8px, 70% 0px, 72% 10px, 74% 3px, 76% 9px, 78% 1px,
+    80% 10px, 82% 2px, 84% 8px, 86% 0px, 88% 10px, 90% 3px, 92% 9px, 94% 1px, 96% 10px, 98% 2px,
+    100% 8px, 100% 100%, 0% 100%
+  );
+  filter: drop-shadow(0 -6px 16px rgba(14, 42, 92, 0.05));
   margin-top: 60px;
 }
 
 .footer-copy {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--color-secondary);
   font-weight: 700;
   margin-bottom: 6px;
@@ -1433,7 +1492,7 @@ ul { list-style: none; }
 
 .footer-sub {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--color-neutral);
 }
 
@@ -1472,28 +1531,15 @@ ul { list-style: none; }
   }
 }
 
-/* ── 15. SCROLL REVEAL ANIMATIONS ────────────────────────────── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUpIn 420ms var(--ease-out) forwards;
-  animation-delay: var(--delay, 0s);
-}
-
-@keyframes fadeUpIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ── 15. SCROLL REVEAL ANIMATIONS (GUARANTEED VISIBILITY) ─────── */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
-}
-
-.reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 350ms var(--ease-out), transform 350ms var(--ease-out);
+}
+
+.reveal-on-scroll.show,
+.reveal-on-scroll.is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
