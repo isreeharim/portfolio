@@ -12,28 +12,28 @@ const DEFAULT_PORTFOLIO_DATA = {
     metaDescription: "Sreehari M — BCA in Artificial Intelligence, Machine Learning & Robotics. Full-stack developer building SaaS platforms, AI-powered systems, and secured API workflows.",
     brandName: "Sreehari M",
     brandDot: "",
-    loaderText: "Sreehari M",
-    statusBadge: "Available for new opportunities",
-    footerText: "Designed & Engineered by Sreehari M",
-    footerSubtext: "Built with vanilla HTML, CSS & JS · Deployed on GitHub Pages"
+    loaderText: "SM-024",
+    statusBadge: "AVAILABLE FOR WORK",
+    footerText: "SREEHARI M // FULL-STACK DEVELOPER",
+    footerSubtext: "SPECIMEN DOSSIER 024 • KERALA, INDIA"
   },
   hero: {
-    badge: "Available for new opportunities",
+    badge: "AVAILABLE FOR WORK",
     showBadge: true,
     showMetrics: true,
-    greeting: "Hello, I'm",
+    greeting: "NAME:",
     name: "Sreehari M",
     phrases: [
-      "build AI & Machine Learning applications.",
-      "engineer SaaS platforms with React & Node.js.",
-      "design role-based auth & JWT security.",
-      "solve complex data & API workflow challenges.",
-      "turn ambitious ideas into reliable software."
+      "engineers resilient full-stack systems.",
+      "builds AI & Machine Learning applications.",
+      "architects SaaS platforms with React & Node.js.",
+      "deploys hardened JWT auth & RBAC security.",
+      "solves complex data & API workflow challenges."
     ],
-    summary: "BCA graduate specializing in Artificial Intelligence, Machine Learning, Robotics, and full-stack software development. Experienced in building practical applications, working through structured workflows, identifying data & API issues, and delivering secured, user-facing systems.",
-    primaryBtnText: "Explore My Projects",
+    summary: "BCA graduate specializing in Artificial Intelligence, Machine Learning, Robotics, and full-stack software development. Experienced in building full-stack SaaS platforms with dynamic redirects, real-time geolocation scan analytics, and hardened JWT/RBAC security architectures.",
+    primaryBtnText: "[ VIEW HARVESTED DEPLOYMENTS ]",
     primaryBtnLink: "#projects",
-    secondaryBtnText: "Get in Touch",
+    secondaryBtnText: "[ TRANSMIT REQUISITION ]",
     secondaryBtnLink: "#contact"
   },
   stats: [

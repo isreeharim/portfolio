@@ -3,61 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" id="meta-desc" content="Sreehari M — Full-Stack & AI Software Developer. Building SaaS platforms, secured APIs, and intelligent systems with React, Node.js, and MongoDB.">
-    <title id="site-title">Sreehari M | Software Developer</title>
+    <meta name="description" id="meta-desc" content="Sreehari M — Full-Stack & AI Software Developer. Specimen dossier showcasing SaaS platforms, intelligent systems, and secured API workflows.">
+    <title id="site-title">Sreehari M • Full-Stack Developer</title>
 
-    <!-- Stylesheet -->
+    <!-- Theme Color: Obsidian Void -->
+    <meta name="theme-color" content="#0a0907">
+
+    <!-- Design System Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Typography: Inter (UI) + JetBrains Mono (Code) -->
+    <!-- Typography: Inter (Black & Bold Display) + JetBrains Mono (Technical Monospace) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Data Layer -->
+    <!-- State & Dynamic Data -->
     <script src="data.js"></script>
     <script src="script.js" defer></script>
 </head>
-<body class="site-body">
+<body class="specimen-body">
 
-    <!-- ── PAGE LOADER ──────────────────────────────────────────── -->
+    <!-- ── SPECIMEN LOADER ──────────────────────────────────────── -->
     <div id="loader" class="page-loader" aria-hidden="true">
         <div class="loader-inner">
-            <div class="loader-monogram" id="loader-logo">SM</div>
+            <div class="loader-specimen-tag">[ SPECIMEN DOSSIER 024 ]</div>
+            <div class="loader-label">
+                <span>LOADING SPECIMEN </span>
+                <span class="loader-monogram" id="loader-logo">SM-024</span>
+                <span class="loader-caret">_</span>
+            </div>
             <div class="loader-bar"><span class="loader-bar-fill"></span></div>
         </div>
     </div>
 
-    <!-- ── NOISE TEXTURE OVERLAY ─────────────────────────────────── -->
-    <div class="noise-overlay" aria-hidden="true"></div>
-
-    <!-- ── GRADIENT ORBS ─────────────────────────────────────────── -->
-    <div class="orb orb-1" aria-hidden="true"></div>
-    <div class="orb orb-2" aria-hidden="true"></div>
-
-    <!-- ── NAVIGATION ────────────────────────────────────────────── -->
-    <header class="navbar-wrapper" id="navbar">
-        <div class="navbar-inner">
-            <a href="#hero" class="nav-logo" id="nav-logo" aria-label="Home">
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text">Sreehari M</span>
-                <span class="logo-bracket">/&gt;</span>
-                <span class="online-dot" title="Available for opportunities"></span>
+    <!-- ── TACTICAL HUD NAVIGATION ──────────────────────────────── -->
+    <header class="hud-navbar" id="navbar">
+        <div class="hud-inner">
+            <a href="#hero" class="hud-brand" id="nav-logo" aria-label="Home">
+                <span class="brand-specimen-id">[SM // 024]</span>
+                <span class="brand-name">SREEHARI M</span>
+                <span class="online-dot" title="Specimen Active"></span>
             </a>
 
-            <nav class="nav-menu" aria-label="Main Navigation">
+            <!-- Technical coordinates & clock -->
+            <div class="hud-telemetry-badge">
+                <span class="telemetry-item"><span class="tele-dot"></span>SYS.ONLINE</span>
+                <span class="telemetry-item">KERALA [10.85°N, 76.27°E]</span>
+            </div>
+
+            <nav class="hud-menu" aria-label="Navigation">
                 <ul class="nav-links">
-                    <li><a href="#hero"       class="nav-link active"><span class="nav-num">00.</span> Home</a></li>
-                    <li><a href="#about"      class="nav-link"><span class="nav-num">01.</span> About</a></li>
-                    <li><a href="#highlights" class="nav-link"><span class="nav-num">02.</span> Focus</a></li>
-                    <li><a href="#projects"   class="nav-link"><span class="nav-num">03.</span> Projects</a></li>
-                    <li><a href="#contact"    class="nav-link"><span class="nav-num">04.</span> Contact</a></li>
+                    <li><a href="#hero" class="nav-link active"><span class="nav-bracket">[00]</span> SPECIMEN</a></li>
+                    <li><a href="#about" class="nav-link"><span class="nav-bracket">[01]</span> ANATOMY</a></li>
+                    <li><a href="#highlights" class="nav-link"><span class="nav-bracket">[02]</span> PROBES</a></li>
+                    <li><a href="#projects" class="nav-link"><span class="nav-bracket">[03]</span> HARVEST</a></li>
+                    <li><a href="#contact" class="nav-link"><span class="nav-bracket">[04]</span> TRANSMIT</a></li>
                 </ul>
             </nav>
 
-            <div class="nav-actions">
-                <a href="#contact" class="nav-cta">Hire Me</a>
-                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <div class="hud-actions">
+                <a href="#contact" class="hud-cta-btn">[ REQUISITION ]</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -65,215 +71,298 @@
     </header>
 
     <!-- ── MOBILE NAVIGATION DRAWER ──────────────────────────────── -->
-    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Navigation Menu">
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Tactical Navigation Menu">
         <div class="mobile-nav-header">
-            <span class="mobile-brand">Sreehari M</span>
-            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">&times;</button>
+            <span class="mobile-brand">[SM // 024] DOSSIER</span>
+            <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">[×]</button>
         </div>
         <ul class="mobile-links-list">
-            <li><a href="#hero"       class="mobile-link"><span>00.</span> Home</a></li>
-            <li><a href="#about"      class="mobile-link"><span>01.</span> About</a></li>
-            <li><a href="#highlights" class="mobile-link"><span>02.</span> Focus</a></li>
-            <li><a href="#projects"   class="mobile-link"><span>03.</span> Projects</a></li>
-            <li><a href="#contact"    class="mobile-link"><span>04.</span> Contact</a></li>
+            <li><a href="#hero" class="mobile-link"><span>[00]</span> SPECIMEN INTAKE</a></li>
+            <li><a href="#about" class="mobile-link"><span>[01]</span> CORE ANATOMY</a></li>
+            <li><a href="#highlights" class="mobile-link"><span>[02]</span> SYSTEM PROBES</a></li>
+            <li><a href="#projects" class="mobile-link"><span>[03]</span> HARVESTED DEPLOYMENTS</a></li>
+            <li><a href="#contact" class="mobile-link"><span>[04]</span> TRANSMIT REQUISITION</a></li>
         </ul>
         <div class="mobile-nav-footer">
+            <div class="mobile-telemetry">STATUS: READY FOR WORK // CONTACT TRANSMITTER</div>
             <a href="mailto:isreeharim@gmail.com" class="mobile-email" id="mobile-email-link">isreeharim@gmail.com</a>
         </div>
     </div>
     <div class="mobile-overlay" id="mobile-overlay"></div>
 
-    <!-- ── SOCIAL SIDEBAR LEFT ───────────────────────────────────── -->
+    <!-- ── FIXED TACTICAL SIDEBARS ───────────────────────────────── -->
     <div class="fixed-side side-left" id="social-sidebar-left">
         <div class="side-icons-stack">
-            <a href="https://github.com/isreeharim" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="social-github" class="side-icon-link">
+            <a href="https://github.com/isreeharim" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="social-github" class="side-icon-link" title="GitHub">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/isreeharim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="social-linkedin" class="side-icon-link">
+            <a href="https://www.linkedin.com/in/isreeharim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="social-linkedin" class="side-icon-link" title="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://x.com/iamsreehari_" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" id="social-twitter" class="side-icon-link">
+            <a href="https://x.com/iamsreehari_" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" id="social-twitter" class="side-icon-link" title="Twitter">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
             </a>
-            <a href="https://www.instagram.com/iamsreehari_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="social-instagram" class="side-icon-link">
+            <a href="https://www.instagram.com/iamsreehari_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="social-instagram" class="side-icon-link" title="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
         </div>
         <div class="side-line"></div>
     </div>
 
-    <!-- ── EMAIL SIDEBAR RIGHT ───────────────────────────────────── -->
     <div class="fixed-side side-right" id="email-sidebar-right">
         <a href="mailto:isreeharim@gmail.com" class="side-email-text" id="sidebar-email-link">isreeharim@gmail.com</a>
         <div class="side-line"></div>
     </div>
 
-    <!-- ── MAIN CONTENT ──────────────────────────────────────────── -->
+    <!-- ── MAIN CONTENT DOSSIER ──────────────────────────────────── -->
     <main id="main-content" class="main-content">
 
         <!-- ═══════════════════════════════════════════════════════
-             SECTION 00 · HERO
+             SECTION 00 · SPECIMEN INTAKE (HERO)
         ════════════════════════════════════════════════════════ -->
         <section id="hero" class="hero-section">
-            <div class="hero-grid">
+            <div class="intake-watermark" aria-hidden="true">INTAKE 2024 // SPECIMEN 024</div>
 
-                <!-- Left: Primary Content -->
-                <div class="hero-content">
+            <div class="hero-layout">
 
-                    <!-- Status Badge -->
-                    <div class="status-badge fade-up" id="hero-status-note" style="--delay:0.1s">
-                        <span class="status-dot"></span>
-                        <span id="hero-badge">Available for new opportunities</span>
+                <!-- Left: Specimen Details & Huge Typography -->
+                <div class="hero-col-sx">
+
+                    <!-- Mini Tag Badges -->
+                    <div class="hero-textboxes fade-up">
+                        <div class="tag-box tag-yellow" id="hero-status-note">
+                            <span class="tag-label" id="hero-greeting">NAME:</span>
+                            <span class="tag-value" id="hero-name">SREEHARI M</span>
+                        </div>
+                        <div class="tag-box tag-pink">
+                            <span class="tag-label">OCCUPATION:</span>
+                            <span class="tag-value">FULL-STACK &amp; AI DEVELOPER</span>
+                        </div>
                     </div>
 
-                    <!-- Greeting + Name -->
-                    <div class="hero-intro fade-up" style="--delay:0.2s">
-                        <p class="hero-greeting" id="hero-greeting">Hello, I'm</p>
-                        <h1 class="hero-name" id="hero-name">
-                            <span class="name-text">Sreehari M</span>
+                    <!-- Massive Editorial Title (Bone White + Acid Green) -->
+                    <div class="hero-title-wrapper fade-up">
+                        <h1 class="hero-title">
+                            <span class="hero-title-bone">FULL-STACK</span>
+                            <span class="hero-title-acid">DEVELOPER</span>
                         </h1>
+                        <p class="hero-threat-line">
+                            +THREAT LVL: <span class="threat-value" id="hero-badge">AVAILABLE FOR WORK</span>
+                        </p>
                     </div>
 
-                    <!-- Typewriter -->
-                    <div class="hero-typewriter fade-up" style="--delay:0.3s">
-                        <span class="typewriter-prefix">I </span>
-                        <span class="typewriter-content" id="typed-text">engineer resilient full-stack systems.</span>
-                        <span class="typewriter-cursor">|</span>
+                    <!-- Typewriter readout -->
+                    <div class="hero-typewriter fade-up">
+                        <span class="typewriter-prompt">&gt; SPEC: </span>
+                        <span class="typewriter-content" id="typed-text">engineers resilient full-stack systems.</span>
+                        <span class="typewriter-cursor">_</span>
                     </div>
 
-                    <!-- Summary -->
-                    <p class="hero-summary fade-up" id="hero-summary" style="--delay:0.4s">
-                        BCA graduate in AI, ML & Robotics. I build full-stack SaaS platforms, secured REST APIs, and intelligent systems — focused on clean architecture, developer craft, and real-world impact.
+                    <!-- Bio Summary -->
+                    <p class="hero-summary fade-up" id="hero-summary">
+                        BCA graduate specializing in Artificial Intelligence, Machine Learning &amp; Robotics. Experienced in building full-stack SaaS platforms with dynamic redirects, real-time geolocation scan analytics, and hardened JWT/RBAC security architectures.
                     </p>
 
-                    <!-- CTAs -->
-                    <div class="hero-actions fade-up" style="--delay:0.5s">
-                        <a href="#projects" class="btn-primary" id="hero-projects-btn">
-                            <span>View Projects</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    <!-- Technical Action Buttons -->
+                    <div class="hero-actions fade-up">
+                        <a href="#projects" class="btn-acid" id="hero-projects-btn">
+                            <span>[ VIEW HARVESTED DEPLOYMENTS ]</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
-                        <a href="#contact" class="btn-secondary" id="hero-contact-btn">
-                            <span>Get in Touch</span>
+                        <a href="#contact" class="btn-hollow" id="hero-contact-btn">
+                            <span>[ TRANSMIT REQUISITION ]</span>
                         </a>
                     </div>
 
-                    <!-- Stat Pills -->
-                    <div class="hero-metrics fade-up" id="hero-metrics" style="--delay:0.6s">
-                        <div class="metric-pill"><span class="metric-icon">⚡</span><span class="metric-label">Full-Stack & AI</span></div>
-                        <div class="metric-pill"><span class="metric-icon">🛡️</span><span class="metric-label">JWT & RBAC</span></div>
-                        <div class="metric-pill"><span class="metric-icon">🟢</span><span class="metric-label">Open to Work</span></div>
+                    <!-- Telemetry Pills (Dynamic CRUD container) -->
+                    <div class="hero-metrics fade-up" id="hero-metrics">
+                        <div class="metric-pill"><span class="metric-icon">⚡</span><span class="metric-label">Full-Stack &amp; AI</span></div>
+                        <div class="metric-pill"><span class="metric-icon">🛡️</span><span class="metric-label">JWT &amp; RBAC</span></div>
+                        <div class="metric-pill"><span class="metric-icon">🎓</span><span class="metric-label">BCA AI &amp; Robotics</span></div>
+                        <div class="metric-pill"><span class="metric-icon">🟢</span><span class="metric-label">Open for Roles</span></div>
                     </div>
                 </div>
 
-                <!-- Right: Code Terminal Card -->
-                <div class="hero-visual fade-up" style="--delay:0.35s">
-                    <div class="terminal-card">
-                        <div class="terminal-titlebar">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                            <span class="terminal-label">developer.ts</span>
+                <!-- Right: Specimen Dossier Frame Box -->
+                <div class="hero-col-dx fade-up">
+                    <div class="specimen-frame-box">
+                        <!-- Technical Crosshairs in corners -->
+                        <span class="corner-cross top-left">+</span>
+                        <span class="corner-cross top-right">+</span>
+                        <span class="corner-cross bottom-left">+</span>
+                        <span class="corner-cross bottom-right">+</span>
+
+                        <div class="frame-header">
+                            <span class="frame-tag">SPECIMEN DOSSIER // SM-024</span>
+                            <span class="frame-status">ACTIVE SCAN</span>
                         </div>
-                        <div class="terminal-body">
-                            <pre><code><span class="t-kw">const</span> <span class="t-fn">developer</span>: <span class="t-type">Profile</span> = {
-  <span class="t-prop">name</span>:     <span class="t-str">"Sreehari M"</span>,
-  <span class="t-prop">role</span>:     <span class="t-str">"Full-Stack Developer"</span>,
-  <span class="t-prop">stack</span>:    [<span class="t-str">"React"</span>, <span class="t-str">"Node.js"</span>, <span class="t-str">"MongoDB"</span>],
-  <span class="t-prop">security</span>: [<span class="t-str">"JWT"</span>, <span class="t-str">"RBAC"</span>],
-  <span class="t-prop">coffee</span>:   <span class="t-bool">true</span>,
-  <span class="t-prop">open</span>:     <span class="t-bool">true</span>,
-};</code></pre>
+
+                        <div class="specimen-matrix-grid">
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ BLOOD TYPE:</span>
+                                <span class="matrix-value text-acid">REACT // TYPESCRIPT</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ DNA SPEC:</span>
+                                <span class="matrix-value">NODE.JS // EXPRESS</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ STORAGE CORE:</span>
+                                <span class="matrix-value">MONGODB // REST APIS</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ IMMUNE SHIELD:</span>
+                                <span class="matrix-value text-pink">JWT AUTH // RBAC SECURITY</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ ADAPTIVE CORTEX:</span>
+                                <span class="matrix-value text-yellow">AI &amp; ML // PYTHON (BCA)</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-label">+ ORIGIN COORD:</span>
+                                <span class="matrix-value">KERALA, IN [10.85°N, 76.27°E]</span>
+                            </div>
                         </div>
-                        <div class="terminal-statusbar">
-                            <span class="t-comment">// TypeScript • Kerala, India</span>
+
+                        <!-- Barcode Telemetry Graphic -->
+                        <div class="barcode-wrap">
+                            <svg class="barcode-svg" viewBox="0 0 280 40" fill="currentColor">
+                                <rect x="0" y="0" width="3" height="40"/>
+                                <rect x="6" y="0" width="1" height="40"/>
+                                <rect x="10" y="0" width="4" height="40"/>
+                                <rect x="17" y="0" width="2" height="40"/>
+                                <rect x="22" y="0" width="1" height="40"/>
+                                <rect x="26" y="0" width="5" height="40"/>
+                                <rect x="34" y="0" width="2" height="40"/>
+                                <rect x="39" y="0" width="1" height="40"/>
+                                <rect x="43" y="0" width="3" height="40"/>
+                                <rect x="49" y="0" width="2" height="40"/>
+                                <rect x="54" y="0" width="6" height="40"/>
+                                <rect x="63" y="0" width="1" height="40"/>
+                                <rect x="67" y="0" width="3" height="40"/>
+                                <rect x="73" y="0" width="4" height="40"/>
+                                <rect x="80" y="0" width="2" height="40"/>
+                                <rect x="85" y="0" width="1" height="40"/>
+                                <rect x="89" y="0" width="5" height="40"/>
+                                <rect x="97" y="0" width="2" height="40"/>
+                                <rect x="102" y="0" width="4" height="40"/>
+                                <rect x="109" y="0" width="1" height="40"/>
+                                <rect x="113" y="0" width="3" height="40"/>
+                                <rect x="119" y="0" width="6" height="40"/>
+                                <rect x="128" y="0" width="2" height="40"/>
+                                <rect x="133" y="0" width="1" height="40"/>
+                                <rect x="137" y="0" width="4" height="40"/>
+                                <rect x="144" y="0" width="3" height="40"/>
+                                <rect x="150" y="0" width="2" height="40"/>
+                                <rect x="155" y="0" width="5" height="40"/>
+                                <rect x="163" y="0" width="1" height="40"/>
+                                <rect x="167" y="0" width="4" height="40"/>
+                                <rect x="174" y="0" width="2" height="40"/>
+                                <rect x="179" y="0" width="3" height="40"/>
+                                <rect x="185" y="0" width="5" height="40"/>
+                                <rect x="193" y="0" width="1" height="40"/>
+                                <rect x="197" y="0" width="3" height="40"/>
+                                <rect x="203" y="0" width="4" height="40"/>
+                                <rect x="210" y="0" width="2" height="40"/>
+                                <rect x="215" y="0" width="6" height="40"/>
+                                <rect x="224" y="0" width="1" height="40"/>
+                                <rect x="228" y="0" width="3" height="40"/>
+                                <rect x="234" y="0" width="5" height="40"/>
+                                <rect x="242" y="0" width="2" height="40"/>
+                                <rect x="247" y="0" width="1" height="40"/>
+                                <rect x="251" y="0" width="4" height="40"/>
+                                <rect x="258" y="0" width="2" height="40"/>
+                                <rect x="263" y="0" width="5" height="40"/>
+                                <rect x="271" y="0" width="2" height="40"/>
+                                <rect x="276" y="0" width="4" height="40"/>
+                            </svg>
+                            <span class="barcode-serial">SM-98421-2024-SYS</span>
                         </div>
                     </div>
-
-                    <!-- Floating chips -->
-                    <div class="chip chip-1">React</div>
-                    <div class="chip chip-2">Node.js</div>
-                    <div class="chip chip-3">MongoDB</div>
                 </div>
 
-            </div>
-
-            <!-- Scroll indicator -->
-            <div class="scroll-indicator">
-                <a href="#about" aria-label="Scroll to About">
-                    <span class="scroll-text">scroll</span>
-                    <span class="scroll-line"></span>
-                </a>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════
-             SECTION 01 · ABOUT
+             HAZARD STRIPED TICKER TAPE (SILVIA MALAVASI SIGNATURE)
         ════════════════════════════════════════════════════════ -->
-        <section id="about" class="section reveal-on-scroll">
-            <div class="section-header">
-                <span class="section-num">01.</span>
-                <h2 class="section-title"><span id="about-title-text">About Me</span></h2>
-                <div class="section-line"></div>
+        <div class="hazard-ticker-wrap">
+            <div class="hazard-stripes-band"></div>
+            <div class="ticker-content-track">
+                <div class="ticker-inner">
+                    <span class="ticker-item">✦ FULL-STACK SAAS ARCHITECTURE</span>
+                    <span class="ticker-item">✦ REAL-TIME SCAN GEOLOCATION ANALYTICS</span>
+                    <span class="ticker-item">✦ AI-POWERED JOB DISCOVERY PLATFORM</span>
+                    <span class="ticker-item">✦ JWT TOKEN SECURITY &amp; RBAC PERIMETER</span>
+                    <span class="ticker-item">✦ REACT &amp; NODE.JS REST ENGINES</span>
+                    <span class="ticker-item">✦ MONGODB CLUSTERS</span>
+                    <span class="ticker-item">✦ AUTHENTICATED CSV EXPORTS</span>
+                    <span class="ticker-item">✦ BCA AI, ML &amp; ROBOTICS</span>
+                    <!-- duplicate for seamless loop -->
+                    <span class="ticker-item">✦ FULL-STACK SAAS ARCHITECTURE</span>
+                    <span class="ticker-item">✦ REAL-TIME SCAN GEOLOCATION ANALYTICS</span>
+                    <span class="ticker-item">✦ AI-POWERED JOB DISCOVERY PLATFORM</span>
+                    <span class="ticker-item">✦ JWT TOKEN SECURITY &amp; RBAC PERIMETER</span>
+                    <span class="ticker-item">✦ REACT &amp; NODE.JS REST ENGINES</span>
+                    <span class="ticker-item">✦ MONGODB CLUSTERS</span>
+                    <span class="ticker-item">✦ AUTHENTICATED CSV EXPORTS</span>
+                    <span class="ticker-item">✦ BCA AI, ML &amp; ROBOTICS</span>
+                </div>
+            </div>
+            <div class="hazard-stripes-band"></div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 01 · CORE ANATOMY & TOOLKIT (ABOUT)
+        ════════════════════════════════════════════════════════ -->
+        <section id="about" class="dossier-section reveal-on-scroll">
+            <div class="subject-header">
+                <span class="subject-star">✦</span>
+                <span class="subject-num">01.</span>
+                <h2 class="subject-title"><span id="about-title-text">SPECIMEN ANATOMY &amp; QUALIFICATIONS</span></h2>
             </div>
 
-            <div class="about-grid">
-                <!-- Bio + Skills + Achievements -->
-                <div class="about-bio-col">
+            <div class="anatomy-grid">
+                <!-- Bio Narratives -->
+                <div class="anatomy-bio-col">
+                    <div class="bio-watermark">// PRIMARY PROFILE ANALYSIS</div>
                     <div class="bio-text" id="about-paragraphs">
-                        <p>Hi, I'm Sreehari M — a BCA graduate in Artificial Intelligence, Machine Learning & Robotics from Yenepoya University. I specialize in full-stack web development with a focus on practical, production-grade systems.</p>
-                        <p>I build end-to-end platforms — from SaaS applications with real-time analytics and RBAC to AI-powered job discovery engines. My work lives at the intersection of clean backend engineering and thoughtful frontend design.</p>
-                        <p>I'm driven by the craft: structured APIs, secure authentication flows, and user-facing interfaces that just work.</p>
+                        <p>Hi, I'm Sreehari M. I'm a BCA graduate in Artificial Intelligence, Machine Learning &amp; Robotics from Yenepoya University, specializing in full-stack web software development.</p>
+                        <p>I build practical applications — from full-stack SaaS platforms with dynamic URL redirection and real-time analytics to automated AI-powered job discovery engines with JWT authentication and Role-Based Access Control (RBAC).</p>
+                        <p>I focus on end-to-end data integrity, structured API workflows, quality debugging, and delivering secured, user-facing systems that run cleanly in fast-paced operational environments.</p>
                     </div>
 
-                    <!-- Skills Cloud -->
-                    <div class="skills-block">
-                        <h3 class="block-label">Technical Skills</h3>
+                    <!-- Technical Toolkit Grid -->
+                    <div class="skills-specimen-block">
+                        <div class="block-tag">[ TECHNICAL TOOLKIT MATRIX ]</div>
                         <ul class="skills-grid" id="skills-list">
                             <li>JavaScript</li><li>Python</li><li>React</li>
                             <li>Tailwind CSS</li><li>Node.js</li><li>Express.js</li>
-                            <li>REST APIs</li><li>MongoDB</li><li>JWT Auth</li>
-                            <li>RBAC Security</li><li>Git & GitHub</li><li>Postman</li>
-                        </ul>
-                    </div>
-
-                    <!-- Achievements -->
-                    <div class="achievements-block">
-                        <h3 class="block-label">Key Achievements</h3>
-                        <ul class="achievements-list" id="achievements-list">
-                            <li class="achievement-item">
-                                <span class="achievement-bullet">▸</span>
-                                <span>Deployed a live full-stack SaaS with dynamic URL redirection & real-time scan analytics.</span>
-                            </li>
-                            <li class="achievement-item">
-                                <span class="achievement-bullet">▸</span>
-                                <span>Implemented JWT + RBAC for multi-tier user & administrator workflows.</span>
-                            </li>
-                            <li class="achievement-item">
-                                <span class="achievement-bullet">▸</span>
-                                <span>Built authenticated CSV export & global system controls with React, Express & MongoDB.</span>
-                            </li>
+                            <li>REST APIs</li><li>MongoDB</li><li>Mongoose</li>
+                            <li>JWT Auth</li><li>RBAC Security</li><li>Git &amp; GitHub</li>
+                            <li>Postman</li><li>Vercel</li><li>VS Code</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Code Card + Education -->
-                <div class="about-card-col">
-                    <!-- Code Profile Card -->
-                    <div class="code-card">
-                        <div class="code-card-header">
-                            <div class="dot-row">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <span class="code-filename">DEV_PROFILE.ts</span>
-                            <button class="copy-btn" id="copy-code-btn" title="Copy snippet" aria-label="Copy code">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                <span class="copy-tooltip">Copied!</span>
+                <!-- Code Card Terminal Dossier -->
+                <div class="anatomy-card-col">
+                    <div class="terminal-dossier" id="code-card">
+                        <div class="dossier-topbar">
+                            <span class="dossier-dots">
+                                <span class="dossier-dot dot-red"></span>
+                                <span class="dossier-dot dot-yellow"></span>
+                                <span class="dossier-dot dot-green"></span>
+                            </span>
+                            <span class="dossier-filename">SPECIMEN_PROFILE.TS</span>
+                            <button class="terminal-copy-btn" id="copy-code-btn" title="Copy snippet" aria-label="Copy Code">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                <span class="copy-tooltip">COPIED!</span>
                             </button>
                         </div>
-                        <div class="code-card-body">
-                            <pre><code id="code-card-content"><span class="t-kw">const</span> <span class="t-fn">developer</span>: <span class="t-type">DeveloperProfile</span> = {
+                        <div class="dossier-code-body">
+                            <pre><code id="code-card-content"><span class="t-kw">const</span> <span class="t-fn">specimen</span>: <span class="t-type">DeveloperProfile</span> = {
   name:     <span class="t-str">"Sreehari M"</span>,
   degree:   <span class="t-str">"BCA (AI, ML &amp; Robotics)"</span>,
   location: <span class="t-str">"Kerala, India"</span>,
@@ -283,36 +372,8 @@
   open:     <span class="t-bool">true</span>
 };</code></pre>
                         </div>
-                    </div>
-
-                    <!-- Education Timeline -->
-                    <div class="education-card">
-                        <h3 class="block-label">Education</h3>
-                        <div class="education-list" id="education-list">
-                            <div class="education-item">
-                                <div class="edu-dot"></div>
-                                <div class="edu-content">
-                                    <div class="edu-institution">Yenepoya deemed to be University</div>
-                                    <div class="edu-degree">BCA – AI, Machine Learning & Robotics</div>
-                                    <div class="edu-detail">Foundation in AI, ML, Robotics & full-stack engineering</div>
-                                </div>
-                            </div>
-                            <div class="education-item">
-                                <div class="edu-dot"></div>
-                                <div class="edu-content">
-                                    <div class="edu-institution">GVHSS Pullanur</div>
-                                    <div class="edu-degree">Higher Secondary Education</div>
-                                    <div class="edu-detail">Computer Science & Mathematics</div>
-                                </div>
-                            </div>
-                            <div class="education-item">
-                                <div class="edu-dot"></div>
-                                <div class="edu-content">
-                                    <div class="edu-institution">THS Manjeri</div>
-                                    <div class="edu-degree">Secondary Education</div>
-                                    <div class="edu-detail">Technical High School foundations</div>
-                                </div>
-                            </div>
+                        <div class="dossier-footer">
+                            <span class="dossier-stamp">// VERIFIED CANDIDATE RECORD</span>
                         </div>
                     </div>
                 </div>
@@ -320,113 +381,245 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════
-             SECTION 02 · FOCUS AREAS
+             SECTION 02 · SYSTEM PROBES & ARCHITECTURAL NODES
         ════════════════════════════════════════════════════════ -->
-        <section id="highlights" class="section reveal-on-scroll">
-            <div class="section-header">
-                <span class="section-num">02.</span>
-                <h2 class="section-title">Core Focus Areas</h2>
-                <div class="section-line"></div>
+        <section id="highlights" class="dossier-section reveal-on-scroll">
+            <div class="subject-header">
+                <span class="subject-star">✦</span>
+                <span class="subject-num">02.</span>
+                <h2 class="subject-title">SYSTEM PROBES &amp; CORE ORGANS</h2>
             </div>
+            <p class="section-subtitle">Tactical breakdown of architectural competence and domain expertise.</p>
 
-            <div class="highlights-grid">
-                <div class="highlight-card featured-card">
-                    <div class="highlight-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <div class="probes-grid">
+                <!-- Probe Node 1 -->
+                <div class="probe-card featured-probe">
+                    <div class="probe-header">
+                        <span class="probe-id">[PRB-01]</span>
+                        <span class="probe-tissue text-acid">PRIMARY TISSUE</span>
                     </div>
-                    <div class="highlight-num">01</div>
-                    <h3>Full-Stack Systems</h3>
-                    <p>Architecting end-to-end web platforms — from React frontends and Express APIs to MongoDB data layers, real-time analytics, and secure deployment workflows.</p>
-                    <div class="highlight-tags">
-                        <span>React</span><span>Node.js</span><span>MongoDB</span>
+                    <h3 class="probe-title">Full-Stack Systems Architecture</h3>
+                    <p class="probe-finding">
+                        The fundamental engine. Architecting responsive React frontends and resilient backend REST microservices with Node.js, Express, and document databases.
+                    </p>
+                    <div class="probe-advantage">
+                        <span class="advantage-label">SELECTIVE ADVANTAGE:</span>
+                        <span>Builds end-to-end data pipelines from database schemas to interactive client screens under strict performance and reliability requirements.</span>
+                    </div>
+                    <div class="probe-chips">
+                        <span class="chip-acid">React</span>
+                        <span class="chip-bone">Node.js</span>
+                        <span class="chip-bone">Express</span>
+                        <span class="chip-bone">MongoDB</span>
                     </div>
                 </div>
 
-                <div class="highlight-card">
-                    <div class="highlight-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                <!-- Probe Node 2 -->
+                <div class="probe-card">
+                    <div class="probe-header">
+                        <span class="probe-id">[PRB-02]</span>
+                        <span class="probe-tissue text-pink">IMMUNE PERIMETER</span>
                     </div>
-                    <div class="highlight-num">02</div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Building intelligent tools — automated pipelines, AI skill-matching engines, and LLM-powered workflows that transform data into actionable user experiences.</p>
-                    <div class="highlight-tags">
-                        <span>Python</span><span>AI Matching</span><span>Automation</span>
+                    <h3 class="probe-title">JWT Security &amp; RBAC Authorization</h3>
+                    <p class="probe-finding">
+                        Defensive perimeter tissue. Implementing multi-tier user and administrator workflows, token expiration handshakes, and protected data routes.
+                    </p>
+                    <div class="probe-advantage">
+                        <span class="advantage-label">SELECTIVE ADVANTAGE:</span>
+                        <span>Secures sensitive SaaS operations, authenticated CSV exports, and administrative overrides against unauthorized privilege escalation.</span>
+                    </div>
+                    <div class="probe-chips">
+                        <span class="chip-pink">JWT Auth</span>
+                        <span class="chip-pink">RBAC</span>
+                        <span class="chip-bone">REST Endpoints</span>
                     </div>
                 </div>
 
-                <div class="highlight-card">
-                    <div class="highlight-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <!-- Probe Node 3 -->
+                <div class="probe-card">
+                    <div class="probe-header">
+                        <span class="probe-id">[PRB-03]</span>
+                        <span class="probe-tissue text-yellow">ADAPTIVE CORTEX</span>
                     </div>
-                    <div class="highlight-num">03</div>
-                    <h3>Security Engineering</h3>
-                    <p>Implementing JWT authentication, Role-Based Access Control, protected API endpoints, and multi-tier admin/user management for production-grade applications.</p>
-                    <div class="highlight-tags">
-                        <span>JWT</span><span>RBAC</span><span>REST APIs</span>
+                    <h3 class="probe-title">AI &amp; Machine Learning Operations</h3>
+                    <p class="probe-finding">
+                        The intelligent cortex. Grounded in BCA training across AI algorithms, machine learning model principles, and automated operational pipelines.
+                    </p>
+                    <div class="probe-advantage">
+                        <span class="advantage-label">SELECTIVE ADVANTAGE:</span>
+                        <span>Designs automated job matching algorithms, duplicate eradication heuristics, and intelligent filtering pipelines for high-volume inputs.</span>
+                    </div>
+                    <div class="probe-chips">
+                        <span class="chip-yellow">Python</span>
+                        <span class="chip-yellow">AI Matching</span>
+                        <span class="chip-bone">Robotics (BCA)</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════
-             SECTION 03 · PROJECTS
+             SECTION 03 · HARVESTED DEPLOYMENTS (PROJECTS)
         ════════════════════════════════════════════════════════ -->
-        <section id="projects" class="section reveal-on-scroll">
-            <div class="section-header">
-                <span class="section-num">03.</span>
-                <h2 class="section-title">Selected Projects</h2>
-                <div class="section-line"></div>
+        <section id="projects" class="dossier-section reveal-on-scroll">
+            <div class="subject-header">
+                <span class="subject-star">✦</span>
+                <span class="subject-num">03.</span>
+                <h2 class="subject-title">HARVESTED DEPLOYMENTS &amp; CASE FILES</h2>
             </div>
-
-            <p class="section-subtitle">A curated selection of live applications and engineering work.</p>
+            <p class="section-subtitle">Verified production systems engineered and deployed to live web infrastructure.</p>
 
             <div class="project-grid" id="project-grid">
-                <!-- Hydrated from data.js -->
+                <!-- Dynamically hydrated from data.js -->
             </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════════
-             SECTION 04 · CONTACT
+             SECTION 04 · SPECIMEN MANIFEST (EDUCATION & IMPACT)
         ════════════════════════════════════════════════════════ -->
-        <section id="contact" class="section reveal-on-scroll contact-section">
-            <div class="contact-wrapper">
-                <p class="contact-overline" id="contact-overline">04. What's Next?</p>
-                <h2 class="contact-heading" id="contact-heading">Let's Build Something Together</h2>
+        <section id="manifest" class="dossier-section reveal-on-scroll">
+            <div class="subject-header">
+                <span class="subject-star">✦</span>
+                <span class="subject-num">04.</span>
+                <h2 class="subject-title">FIELD MANIFEST &amp; CREDENTIALS</h2>
+            </div>
+
+            <div class="manifest-grid">
+                <!-- Education Timeline -->
+                <div class="manifest-col">
+                    <div class="manifest-col-title">[ CERTIFIED EDUCATION DOSSIER ]</div>
+                    <div class="education-list" id="education-list">
+                        <div class="education-item">
+                            <div class="edu-node"></div>
+                            <div class="edu-content">
+                                <div class="edu-institution">Yenepoya deemed to be University</div>
+                                <div class="edu-degree">BCA – Artificial Intelligence, Machine Learning &amp; Robotics</div>
+                                <div class="edu-detail">Comprehensive foundation in AI algorithms, ML pipelines, Robotics systems, and full-stack software development.</div>
+                            </div>
+                        </div>
+                        <div class="education-item">
+                            <div class="edu-node"></div>
+                            <div class="edu-content">
+                                <div class="edu-institution">GVHSS Pullanur</div>
+                                <div class="edu-degree">Higher Secondary Education</div>
+                                <div class="edu-detail">Higher secondary curriculum with specialization in Computer Science &amp; Mathematics.</div>
+                            </div>
+                        </div>
+                        <div class="education-item">
+                            <div class="edu-node"></div>
+                            <div class="edu-content">
+                                <div class="edu-institution">THS Manjeri</div>
+                                <div class="edu-degree">Secondary Education</div>
+                                <div class="edu-detail">Technical High School foundations with engineering fundamentals.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Impact & Achievements -->
+                <div class="manifest-col">
+                    <div class="manifest-col-title">[ VERIFIED FIELD IMPACT ]</div>
+                    <ul class="achievements-list" id="achievements-list">
+                        <li class="achievement-item">
+                            <span class="ach-bullet">[+]</span>
+                            <span>Developed and deployed a live full-stack SaaS platform with dynamic URL redirection and real-time geolocation scan analytics.</span>
+                        </li>
+                        <li class="achievement-item">
+                            <span class="ach-bullet">[+]</span>
+                            <span>Implemented JWT security and Role-Based Access Control (RBAC) for multi-tier user and administrator workflows.</span>
+                        </li>
+                        <li class="achievement-item">
+                            <span class="ach-bullet">[+]</span>
+                            <span>Built an authenticated CSV data-export workflow and global system controls using React, Express, and MongoDB.</span>
+                        </li>
+                    </ul>
+
+                    <!-- Telemetry coordinates card -->
+                    <div class="locale-dossier-card">
+                        <div class="locale-row">
+                            <span class="locale-key">STATION LOCALE:</span>
+                            <span class="locale-val">KERALA, INDIA</span>
+                        </div>
+                        <div class="locale-row">
+                            <span class="locale-key">GEODETIC COORD:</span>
+                            <span class="locale-val">10.8505° N, 76.2711° E</span>
+                        </div>
+                        <div class="locale-row">
+                            <span class="locale-key">COMM STATUS:</span>
+                            <span class="locale-val text-acid">READY FOR DISPATCH // FREELANCE &amp; FULL-TIME</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 05 · REQUISITION TERMINAL (CONTACT)
+        ════════════════════════════════════════════════════════ -->
+        <section id="contact" class="dossier-section reveal-on-scroll contact-section">
+            <div class="contact-box">
+                <div class="subject-header centered">
+                    <span class="subject-star">✦</span>
+                    <span class="subject-num" id="contact-overline">05.</span>
+                    <h2 class="subject-title" id="contact-heading">AUTHORIZE REQUISITION</h2>
+                </div>
                 <p class="contact-desc" id="contact-desc">
-                    Whether you have a project in mind, an open role, or just want to connect — I'd love to hear from you.
+                    Direct transmission channel to Sreehari M. Transmit your project specifications, role openings, or software inquiries.
                 </p>
 
-                <form id="contact-form" class="contact-form">
+                <form id="contact-form" class="tactical-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="name" required placeholder="John Doe">
+                            <label for="contact-name">[ REQUISITIONER NAME ]</label>
+                            <input type="text" id="contact-name" name="name" required placeholder="e.g. John Doe">
                         </div>
                         <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="email" required placeholder="john@example.com">
+                            <label for="contact-email">[ COMM CHANNEL / EMAIL ]</label>
+                            <input type="email" id="contact-email" name="email" required placeholder="e.g. john@domain.com">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" name="message" required rows="5" placeholder="Tell me about your project..."></textarea>
+                        <label for="contact-message">[ TRANSMISSION SPECIFICATIONS ]</label>
+                        <textarea id="contact-message" name="message" required rows="5" placeholder="Outline your project scope, technical stack, or role details..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary submit-btn" id="submit-btn">
-                        <span id="submit-btn-text">Send Message</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+
+                    <button type="submit" class="btn-transmit" id="submit-btn">
+                        <span id="submit-btn-text">[ TRANSMIT SIGNAL // SEND MESSAGE ↵ ]</span>
                     </button>
+
                     <div id="form-status" class="form-status" role="alert"></div>
                 </form>
+
+                <div class="direct-comms-readout">
+                    <div class="direct-item">
+                        <span class="direct-label">DIRECT INBOX:</span>
+                        <a href="mailto:isreeharim@gmail.com" class="direct-link">isreeharim@gmail.com</a>
+                    </div>
+                    <div class="direct-item">
+                        <span class="direct-label">DIRECT PHONE:</span>
+                        <a href="tel:+918129402549" class="direct-link">+91 8129402549</a>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- ── FOOTER ─────────────────────────────────────────────────── -->
-    <footer class="site-footer">
+    <!-- ── TACTICAL FOOTER ───────────────────────────────────────── -->
+    <footer class="hud-footer">
+        <div class="footer-hazard-bar"></div>
         <div class="footer-inner">
-            <p class="footer-copy" id="footer-text">Designed &amp; Engineered by <span class="accent-text">Sreehari M</span></p>
-            <p class="footer-sub" id="footer-subtext">Built with vanilla HTML, CSS & JS </p>
+            <div class="footer-col-left">
+                <span class="footer-brand" id="footer-text">SREEHARI M // FULL-STACK DEVELOPER</span>
+                <span class="footer-sub" id="footer-subtext">SPECIMEN DOSSIER 024 • KERALA, INDIA</span>
+            </div>
+
+            <div class="footer-col-right">
+                <a href="https://github.com/isreeharim" target="_blank" rel="noopener noreferrer">[GITHUB]</a>
+                <a href="https://www.linkedin.com/in/isreeharim/" target="_blank" rel="noopener noreferrer">[LINKEDIN]</a>
+                <a href="https://x.com/iamsreehari_" target="_blank" rel="noopener noreferrer">[X/TWITTER]</a>
+                <a href="https://www.instagram.com/iamsreehari_/" target="_blank" rel="noopener noreferrer">[INSTAGRAM]</a>
+            </div>
         </div>
     </footer>
 

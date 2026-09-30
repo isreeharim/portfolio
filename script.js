@@ -88,21 +88,20 @@ function renderPortfolio() {
         if (brandLogo) {
             const rawName = data.meta.brandName || 'Sreehari M';
             brandLogo.innerHTML = `
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text">${escapeHtml(rawName)}</span>
-                <span class="logo-bracket">/&gt;</span>
-                <span class="online-dot" title="Available for opportunities"></span>
+                <span class="brand-specimen-id">[SM // 024]</span>
+                <span class="brand-name">${escapeHtml(rawName.toUpperCase())}</span>
+                <span class="online-dot" title="Specimen Active"></span>
             `;
         }
 
         const loaderLogo = document.getElementById('loader-logo');
         if (loaderLogo) {
-            loaderLogo.textContent = data.meta.loaderText || 'Sreehari M';
+            loaderLogo.textContent = data.meta.loaderText || 'SM-024';
         }
 
         const footerText = document.getElementById('footer-text');
         if (footerText && data.meta.footerText) {
-            footerText.innerHTML = `${escapeHtml(data.meta.footerText)}`;
+            footerText.innerHTML = `${escapeHtml(data.meta.footerText.toUpperCase())}`;
         }
 
         const footerSubEl = document.getElementById('footer-subtext');
@@ -126,13 +125,13 @@ function renderPortfolio() {
         }
 
         const badgeEl = document.getElementById('hero-badge');
-        if (badgeEl) badgeEl.textContent = data.hero.badge || data.meta?.statusBadge || 'Available for new opportunities';
+        if (badgeEl) badgeEl.textContent = (data.hero.badge || data.meta?.statusBadge || 'AVAILABLE FOR WORK').toUpperCase();
 
         const greetingEl = document.getElementById('hero-greeting');
-        if (greetingEl) greetingEl.textContent = data.hero.greeting || "Hello, I'm";
+        if (greetingEl) greetingEl.textContent = 'NAME:';
 
         const nameEl = document.getElementById('hero-name');
-        if (nameEl) nameEl.innerHTML = `<span class="name-text">${escapeHtml(data.hero.name || 'Sreehari M')}</span>`;
+        if (nameEl) nameEl.textContent = (data.hero.name || 'SREEHARI M').toUpperCase();
 
         const summaryEl = document.getElementById('hero-summary');
         if (summaryEl) summaryEl.textContent = data.hero.summary || '';
@@ -270,25 +269,27 @@ function renderPortfolio() {
 
         if (visibleProjects.length === 0) {
             projectGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: var(--text-secondary); font-family: var(--font-mono);">
-                    <p>No projects visible.</p>
+                <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: var(--grey); font-family: var(--font-mono);">
+                    <p>[ NO DEPLOYMENTS LOGGED IN DOSSIER ]</p>
                 </div>
             `;
         } else {
             projectGrid.innerHTML = visibleProjects.map((p, index) => {
                 const techList = (p.techStack || []).map(t => `<li>${escapeHtml(t)}</li>`).join('');
+                const depNum = String(index + 1).padStart(2, '0');
+                const domainLabel = p.liveUrl ? p.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '').toUpperCase() : 'CLASSIFIED SYSTEM';
 
                 let linkIcons = '';
                 if (p.githubUrl && p.githubUrl.trim() !== '') {
                     linkIcons += `
-                        <a href="${escapeHtml(p.githubUrl)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="icon-btn" title="View Source Code">
+                        <a href="${escapeHtml(p.githubUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Source Code" class="icon-btn" title="Inspect Source Code">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         </a>
                     `;
                 }
                 if (p.liveUrl && p.liveUrl.trim() !== '') {
                     linkIcons += `
-                        <a href="${escapeHtml(p.liveUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Live Demo" class="icon-btn" title="Open Live Site">
+                        <a href="${escapeHtml(p.liveUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Live System" class="icon-btn" title="Launch Deployment">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
                     `;
@@ -299,8 +300,9 @@ function renderPortfolio() {
                         <div class="card-glow"></div>
                         <div class="project-inner">
                             <div class="project-top">
-                                <div class="folder-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                <div style="display:flex; flex-direction:column; gap:4px;">
+                                    <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--green); font-weight:700; letter-spacing:0.1em;">// DEPLOYMENT [${depNum}]</span>
+                                    <span style="font-family:var(--font-mono); font-size:0.74rem; color:var(--yellow); font-weight:700;">[ ${escapeHtml(domainLabel)} ]</span>
                                 </div>
                                 <div class="project-links">
                                     ${linkIcons}
