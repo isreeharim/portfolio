@@ -1225,7 +1225,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .main-content { padding-left: 0; padding-right: 0; }
 
   .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 80px; }
-  .hero-visual { order: -1; }
+  .hero-visual { order: 1; }
   .terminal-card { max-width: 560px; margin: 0 auto; }
   .chip-1, .chip-2, .chip-3 { display: none; }
   .scroll-indicator { display: none; }
