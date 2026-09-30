@@ -50,20 +50,26 @@ function type() {
 }
 
 // ── 2. PAGE LOADER & FADE-UP ANIMATIONS ───────────────────────
-window.addEventListener('load', () => {
+function hideLoader() {
     const loader = document.getElementById('loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-            triggerHeroAnimations();
-        }, 750);
+    if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+        triggerHeroAnimations();
     }
+}
+
+// Dismiss loader promptly on DOM load (200ms) or window load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(hideLoader, 200);
+});
+window.addEventListener('load', () => {
+    setTimeout(hideLoader, 100);
 });
 
 function triggerHeroAnimations() {
     const fadeEls = document.querySelectorAll('.fade-up');
     fadeEls.forEach(el => {
-        setTimeout(() => el.classList.add('visible'), 50);
+        el.classList.add('visible');
     });
 }
 
@@ -570,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPortfolio();
     initCopyCodeButton();
     initScrollReveal();
-    setTimeout(type, 1000);
+    setTimeout(type, 350);
 });
 
 window.addEventListener('portfolioDataUpdated', () => {
