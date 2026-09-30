@@ -17,7 +17,7 @@ const DEFAULT_PORTFOLIO_DATA = {
     loaderText: "Sreehari M",
     statusBadge: "Available for new opportunities",
     footerText: "Designed & Engineered by Sreehari M",
-    footerSubtext: "Written in ink on digital parchment • Handcrafted with care."
+    footerSubtext: "Built with vanilla HTML, CSS & JS · Deployed on GitHub Pages"
   },
   hero: {
     badge: "Available for new opportunities",
