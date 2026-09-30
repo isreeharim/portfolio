@@ -265,7 +265,7 @@ function renderPortfolio() {
         if (visibleProjects.length === 0) {
             projectGrid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: var(--text-secondary); font-family: var(--font-mono);">
-                    <p>No projects visible. Manage projects in the Admin Studio.</p>
+                    <p>No projects visible.</p>
                 </div>
             `;
         } else {
@@ -565,15 +565,7 @@ if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
 if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
 document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMobileNav));
 
-// ── 12. ADMIN SHORTCUT: Ctrl + Shift + A ──────────────────────
-window.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-        e.preventDefault();
-        window.location.href = 'admin.html';
-    }
-});
-
-// ── 13. INITIALIZATION & CROSS-TAB SYNC ────────────────────────
+// ── 12. INITIALIZATION & CROSS-TAB SYNC ────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     renderPortfolio();
     initCopyCodeButton();

@@ -5,8 +5,6 @@
 ============================================================ */
 
 const STORAGE_KEY = 'sreehari_portfolio_data';
-const AUTH_KEY = 'sreehari_admin_pin';
-const DEFAULT_PIN = 'admin123';
 
 const DEFAULT_PORTFOLIO_DATA = {
   meta: {
@@ -251,24 +249,4 @@ function importPortfolioData(jsonString) {
   } catch (err) {
     return { success: false, error: err.message };
   }
-}
-
-/**
- * Admin PIN helpers
- */
-function getAdminPin() {
-  return localStorage.getItem(AUTH_KEY) || DEFAULT_PIN;
-}
-
-function setAdminPin(newPin) {
-  if (!newPin || newPin.trim().length < 4) {
-    return { success: false, error: "PIN must be at least 4 characters." };
-  }
-  localStorage.setItem(AUTH_KEY, newPin.trim());
-  return { success: true };
-}
-
-function verifyAdminPin(enteredPin) {
-  const current = getAdminPin();
-  return enteredPin === current;
 }

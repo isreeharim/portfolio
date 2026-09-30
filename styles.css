@@ -47,14 +47,6 @@
   --z-navbar:         100;
   --z-mobile-nav:     200;
   --z-sidebar:        80;
-
-  /* Admin / shared ink tokens (used by admin.css) */
-  --ink-primary:      #1a1a2e;
-  --ink-blue:         #0E2A5C;
-  --ink-red:          #D12828;
-  --bg-paper:         #fdf8f0;
-  --border-ink:       rgba(26, 26, 46, 0.2);
-  --font-hand:        'Caveat', cursive;
 }
 
 /* ── RESET & BASE ────────────────────────────────────────────── */
