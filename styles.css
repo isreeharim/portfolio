@@ -1041,6 +1041,72 @@ ul { list-style: none; }
   transform: translateY(-2px) rotate(1deg);
 }
 
+/* ── Education & Key Achievements Styles ──────────────────────── */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.education-item {
+  background: var(--color-primary);
+  border: 1.5px solid var(--color-border-sketch);
+  border-radius: 6px;
+  padding: 10px 14px;
+  box-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-tertiary);
+}
+
+.edu-institution {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.edu-degree {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-tertiary);
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.edu-detail {
+  font-size: 0.92rem;
+  color: var(--color-neutral);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  line-height: 1.55;
+}
+
+.achievement-bullet {
+  color: var(--color-tertiary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 /* Engineering Graph Paper Card with Torn Deckled Bottom */
 .graph-sheet-card {
   background-color: #fafbfc;

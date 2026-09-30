@@ -208,7 +208,7 @@ function renderPortfolio() {
     // D. About Section
     if (data.about) {
         const aboutTitleText = document.getElementById('about-title-text');
-        if (aboutTitleText) aboutTitleText.textContent = data.about.headingTitle || 'About & Philosophy';
+        if (aboutTitleText) aboutTitleText.textContent = data.about.headingTitle || 'About & Qualifications';
 
         const paragraphsContainer = document.getElementById('about-paragraphs');
         if (paragraphsContainer && Array.isArray(data.about.paragraphs)) {
@@ -224,15 +224,40 @@ function renderPortfolio() {
             skillsContainer.innerHTML = data.about.skills.map(s => `<li>${escapeHtml(s)}</li>`).join('');
         }
 
+        // Achievements List
+        const achievementsContainer = document.getElementById('achievements-list');
+        const achievementsData = data.achievements || data.about.achievements;
+        if (achievementsContainer && Array.isArray(achievementsData)) {
+            achievementsContainer.innerHTML = achievementsData.map(ach => `
+                <li class="achievement-item">
+                    <span class="achievement-bullet">•</span>
+                    <span>${escapeHtml(ach)}</span>
+                </li>
+            `).join('');
+        }
+
+        // Education List
+        const eduContainer = document.getElementById('education-list');
+        if (eduContainer && Array.isArray(data.about.education)) {
+            eduContainer.innerHTML = data.about.education.map(edu => `
+                <div class="education-item">
+                    <div class="edu-institution">${escapeHtml(edu.institution)}</div>
+                    <div class="edu-degree">${escapeHtml(edu.degree)}</div>
+                    ${edu.detail ? `<div class="edu-detail">${escapeHtml(edu.detail)}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
         // Code Terminal Card
         const codeCardContent = document.getElementById('code-card-content');
         if (codeCardContent && data.about.codeCard) {
             const cc = data.about.codeCard;
             codeCardContent.innerHTML = `<span class="t-kw">const</span> <span class="t-fn">developer</span>: <span class="t-type">DeveloperProfile</span> = {
   name:     <span class="t-str">"${escapeHtml(cc.name || 'Sreehari M')}"</span>,
-  role:     <span class="t-str">"${escapeHtml(cc.role || 'Software Developer')}"</span>,
-  location: <span class="t-str">"${escapeHtml(cc.location || 'India')}"</span>,
-  passion:  <span class="t-str">"${escapeHtml(cc.passion || 'Crafting Great Software')}"</span>,
+  degree:   <span class="t-str">"${escapeHtml(cc.degree || 'BCA (AI, ML & Robotics)')}"</span>,
+  location: <span class="t-str">"${escapeHtml(cc.location || 'Kerala, India')}"</span>,
+  focus:    <span class="t-str">"${escapeHtml(cc.focus || cc.passion || 'Full-Stack SaaS & AI Operations')}"</span>,
+  security: [<span class="t-str">"JWT"</span>, <span class="t-str">"RBAC"</span>],
   coffee:   <span class="t-bool">${Boolean(cc.coffee)}</span>,
   open:     <span class="t-bool">${Boolean(cc.open)}</span>
 };`;
